@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "experience": "Experience",
+    "facilities": "Facilities",
+    "gallery": "Gallery",
+    "pricing": "Stay",
+    "nearby": "Nearby",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "blog": "Journal",
+    "cta": "Reserve"
+  },
+  "hero": {
+    "eyebrow": "Bursa · Nature Escape",
+    "title": "You don't have to go far to leave the city behind",
+    "subtitle": "Reconnect with nature at Bursa Karavanlı Bahçe.",
+    "primaryCta": "Make a Reservation",
+    "secondaryCta": "Explore the Gallery",
+    "scroll": "Scroll",
+    "stats": [
+      {
+        "value": "1 hour",
+        "label": "from Bursa"
+      },
+      {
+        "value": "12+",
+        "label": "Caravan pitches"
+      },
+      {
+        "value": "5 minutes",
+        "label": "to nature trails"
+      }
+    ]
+  },
+  "experience": {
+    "eyebrow": "The Experience",
+    "title": "What awaits you here",
+    "lead": "Far more than a caravan park — a place to slow down, breathe, and truly be with the people you love."
+  },
+  "facilities": {
+    "eyebrow": "Facilities",
+    "title": "Comfort, in the middle of nature",
+    "lead": "Everything you need is taken care of — the rest is left to nature.",
+    "badgeTitle": "At every pitch",
+    "badgeSub": "Power & fresh water"
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "A glimpse of calm",
+    "lead": "Sunsets, fireside conversations, and moments spent in nature.",
+    "cta": "More on Instagram"
+  },
+  "nearby": {
+    "eyebrow": "Nearby",
+    "title": "A region to discover",
+    "lead": "Our garden sits just minutes from Bursa's most beautiful nature and heritage spots."
+  },
+  "pricing": {
+    "eyebrow": "Stay With Us",
+    "title": "An escape that suits you",
+    "lead": "With your caravan, your tent, or just for the day. Reach out for details and current availability.",
+    "cta": "Get Information",
+    "tag": "Guest Favourite",
+    "note": "Message us on WhatsApp for details, availability and a quote — we reply the same day."
+  },
+  "reviews": {
+    "eyebrow": "Guest Experiences",
+    "title": "From our guests"
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "title": "Good to know",
+    "asideTitle": "Still wondering?",
+    "asideText": "Message us on WhatsApp with anything at all. We usually reply within minutes.",
+    "asideCta": "Message Us"
+  },
+  "instagram": {
+    "eyebrow": "Social",
+    "title": "Moments from the garden"
+  },
+  "contact": {
+    "eyebrow": "Get in Touch",
+    "title": "Your spot is waiting",
+    "lead": "WhatsApp is the fastest way to book or ask anything. We're just a message away.",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "address": "Address",
+    "instagram": "Instagram",
+    "primaryCta": "Reserve on WhatsApp",
+    "secondaryCta": "Follow on Instagram",
+    "mapTitle": "Bursa Karavanlı Bahçe",
+    "mapSub": "View on map"
+  },
+  "footer": {
+    "tagline": "Reconnect with nature.",
+    "rights": "All rights reserved."
+  },
+  "whatsappFab": "Reserve on WhatsApp",
+  "blog": {
+    "eyebrow": "Journal",
+    "title": "Notes from nature",
+    "lead": "Escape ideas, local guides and stories from the garden.",
+    "readMore": "Read article",
+    "backToList": "All articles",
+    "minRead": "min read"
+  }
+}

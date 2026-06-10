@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "id": "caravan-stays",
+      "image": "/images/experience/caravan-stays.jpg",
+      "tone": "warm",
+      "tr": {
+        "title": "Karavan Konaklama",
+        "description": "Doğanın tam ortasında, kendi karavanınız ya da bizimkiyle konforlu bir konaklama."
+      },
+      "en": {
+        "title": "Caravan Stays",
+        "description": "Comfortable nights in the heart of nature, in your own caravan or one of ours."
+      }
+    },
+    {
+      "id": "rest-in-nature",
+      "image": "/images/experience/rest-in-nature.jpg",
+      "tone": "forest",
+      "tr": {
+        "title": "Doğa İçinde Dinlenme",
+        "description": "Ağaçların gölgesinde, kuş seslerine karışan gerçek bir dinlenme."
+      },
+      "en": {
+        "title": "Rest in Nature",
+        "description": "True rest under the shade of trees, to the sound of birdsong."
+      }
+    },
+    {
+      "id": "family-friendly",
+      "image": "/images/experience/family-friendly.jpg",
+      "tone": "sunset",
+      "tr": {
+        "title": "Aile Dostu Ortam",
+        "description": "Çocukların özgürce koşabildiği, herkesin kendini evinde hissettiği bir alan."
+      },
+      "en": {
+        "title": "Family Friendly",
+        "description": "A space where children roam freely and everyone feels at home."
+      }
+    },
+    {
+      "id": "quiet-peaceful",
+      "image": "/images/experience/quiet-peaceful.jpg",
+      "tone": "lake",
+      "tr": {
+        "title": "Sessiz ve Huzurlu",
+        "description": "Şehrin gürültüsünden uzakta, sadece doğanın sesini duyacağınız bir sessizlik."
+      },
+      "en": {
+        "title": "Quiet & Peaceful",
+        "description": "Far from the noise of the city, a stillness where only nature speaks."
+      }
+    }
+  ]
+}

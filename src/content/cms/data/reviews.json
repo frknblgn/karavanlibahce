@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "id": "elif-mert",
+      "name": "Elif & Mert",
+      "color": "#A27B5C",
+      "role": {
+        "tr": "Karavan misafiri",
+        "en": "Caravan guests"
+      },
+      "text": {
+        "tr": "Şehirden bir saat uzakta ama bambaşka bir dünya. Sabah kuş sesleriyle uyandık, akşam ateş başında oturduk. Kesinlikle döneceğiz.",
+        "en": "An hour from the city but a different world entirely. We woke to birdsong and spent the evening by the fire. We'll absolutely be back."
+      }
+    },
+    {
+      "id": "canan",
+      "name": "Canan Y.",
+      "color": "#3E5F44",
+      "role": {
+        "tr": "Ailecek konaklama",
+        "en": "Family stay"
+      },
+      "text": {
+        "tr": "Çocuklarla geldik, hepimiz dinlenmiş döndük. Alan çok temiz, sahipleri inanılmaz ilgili. Huzurun adresi.",
+        "en": "We came with the kids and all left rested. Spotless grounds, incredibly caring hosts. The address of peace."
+      }
+    },
+    {
+      "id": "gorkem",
+      "name": "Görkem A.",
+      "color": "#D98324",
+      "role": {
+        "tr": "Karavan misafiri",
+        "en": "Caravan guest"
+      },
+      "text": {
+        "tr": "Karavanımızla konakladık, elektrik ve su bağlantısı sorunsuzdu. Gün batımı manzarası tek kelimeyle muhteşem.",
+        "en": "Stayed with our caravan; power and water hook-ups were flawless. The sunset view is simply spectacular."
+      }
+    }
+  ]
+}

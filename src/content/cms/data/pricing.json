@@ -1,0 +1,77 @@
+{
+  "items": [
+    {
+      "id": "caravan",
+      "icon": "caravan",
+      "tr": {
+        "title": "Karavan Konaklama",
+        "subtitle": "Kendi karavanınız için tam donanımlı, manzaralı parsel.",
+        "features": [
+          "Elektrik & temiz su bağlantısı",
+          "Özel parsel ve oturma alanı",
+          "Duş, WC ve Wi-Fi erişimi",
+          "Gün boyu doğayla iç içe"
+        ]
+      },
+      "en": {
+        "title": "Caravan Stay",
+        "subtitle": "A fully serviced, scenic pitch for your own caravan.",
+        "features": [
+          "Electric & fresh water hook-up",
+          "Private pitch & seating area",
+          "Showers, WC & Wi-Fi access",
+          "All day surrounded by nature"
+        ]
+      }
+    },
+    {
+      "id": "tent",
+      "icon": "tent",
+      "featured": true,
+      "tr": {
+        "title": "Çadır Alanı",
+        "subtitle": "Doğayla iç içe, sade ve huzurlu bir kamp deneyimi.",
+        "features": [
+          "Gölgeli, düz çadır zemini",
+          "Ortak ateş ve mangal alanı",
+          "Duş, WC ve Wi-Fi erişimi",
+          "Manzaralı sessiz bölge"
+        ]
+      },
+      "en": {
+        "title": "Tent Area",
+        "subtitle": "A simple, peaceful camping experience deep in nature.",
+        "features": [
+          "Shaded, level tent ground",
+          "Shared fire & barbecue area",
+          "Showers, WC & Wi-Fi access",
+          "Quiet zone with a view"
+        ]
+      }
+    },
+    {
+      "id": "day-visit",
+      "icon": "sun",
+      "tr": {
+        "title": "Günübirlik Ziyaret",
+        "subtitle": "Bir gün boyunca doğanın tadını çıkarın, akşam evinizde olun.",
+        "features": [
+          "Gündüz giriş imkanı",
+          "Piknik ve dinlenme alanları",
+          "Ortak kullanım alanlarına erişim",
+          "Otopark dahil"
+        ]
+      },
+      "en": {
+        "title": "Day Visit",
+        "subtitle": "Enjoy nature all day and be home by evening.",
+        "features": [
+          "Daytime access",
+          "Picnic & lounging areas",
+          "Use of shared facilities",
+          "Parking included"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "name": "Bursa Karavanlı Bahçe",
+  "legalName": "Bursa Karavanlı Bahçe",
+  "url": "https://www.bursakaravanlibahce.com",
+  "description": {
+    "tr": "Bursa'ya bir saat uzaklıkta, doğanın içinde premium bir karavan ve kamp kaçamağı. Karavan konaklama, çadır alanı ve günübirlik ziyaret.",
+    "en": "A premium caravan and camping escape in nature, one hour from Bursa. Caravan stays, a tent area and day visits."
+  },
+  "contact": {
+    "phone": "+90 5XX XXX XX XX",
+    "whatsapp": "905XXXXXXXXX",
+    "whatsappMessage": "Merhaba! Bursa Karavanlı Bahçe için rezervasyon yapmak istiyorum.",
+    "email": "merhaba@bursakaravanlibahce.com"
+  },
+  "social": {
+    "instagram": "https://instagram.com/bursakaravanlibahce",
+    "instagramHandle": "@bursakaravanlibahce"
+  },
+  "address": {
+    "full": "Bursa, Türkiye",
+    "street": "",
+    "locality": "Bursa",
+    "region": "Bursa",
+    "postalCode": "16000",
+    "country": "TR"
+  },
+  "geo": {
+    "lat": 40.1885,
+    "lng": 28.9784
+  },
+  "mapsUrl": "https://maps.google.com/?q=Bursa+Karavanlı+Bahçe",
+  "openingHours": [
+    {
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "22:00"
+    },
+    {
+      "days": [
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "23:00"
+    }
+  ],
+  "branding": {
+    "logo": "/logo.svg"
+  },
+  "reviews": {
+    "show": false,
+    "score": "",
+    "count": ""
+  },
+  "defaultLocale": "tr",
+  "hero": {
+    "image": "/images/hero/hero-caravan-sunset.jpg",
+    "alt": "Gün batımında karavan, oturma alanı ve doğa"
+  },
+  "facilitiesImage": {
+    "image": "/images/facilities/facilities.jpg",
+    "alt": {
+      "tr": "Konfor, doğanın içinde",
+      "en": "Comfort, in the middle of nature"
+    }
+  },
+  "seo": {
+    "defaultTitle": {
+      "tr": "Doğayla yeniden bağlantı kurun",
+      "en": "Reconnect with nature"
+    },
+    "defaultImage": "/images/og/og-default.jpg",
+    "blogTitle": "Günlük",
+    "blogDescription": "Kaçamak fikirleri, çevre rehberleri ve Bursa Karavanlı Bahçe'den hikâyeler."
+  }
+}

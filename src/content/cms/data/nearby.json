@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "id": "dagyenice",
+      "image": "/images/nearby/dagyenice.jpg",
+      "tone": "lake",
+      "distance": "10 dk",
+      "tr": {
+        "title": "Dağyenice Göleti",
+        "description": "Sazlıklar ve göl manzarası eşliğinde sakin bir yürüyüş rotası."
+      },
+      "en": {
+        "title": "Dağyenice Lake",
+        "description": "A calm walking route along the reeds and open water."
+      }
+    },
+    {
+      "id": "golyazi",
+      "image": "/images/nearby/golyazi.jpg",
+      "tone": "warm",
+      "distance": "25 dk",
+      "tr": {
+        "title": "Gölyazı",
+        "description": "Apolyont Gölü üzerinde, tarih kokan bir balıkçı kasabası."
+      },
+      "en": {
+        "title": "Gölyazı",
+        "description": "A historic fishing town set on Lake Apolyont."
+      }
+    },
+    {
+      "id": "cumalikizik",
+      "image": "/images/nearby/cumalikizik.jpg",
+      "tone": "sunset",
+      "distance": "20 dk",
+      "tr": {
+        "title": "Cumalıkızık",
+        "description": "UNESCO listesindeki 700 yıllık Osmanlı köyü ve taş sokaklar."
+      },
+      "en": {
+        "title": "Cumalıkızık",
+        "description": "A 700-year-old Ottoman village on the UNESCO list."
+      }
+    },
+    {
+      "id": "misi",
+      "image": "/images/nearby/misi.jpg",
+      "tone": "forest",
+      "distance": "15 dk",
+      "tr": {
+        "title": "Misi Köyü",
+        "description": "Nilüfer kıyısında sanat, kahve ve nostaljik bir atmosfer."
+      },
+      "en": {
+        "title": "Misi Village",
+        "description": "Art, coffee and nostalgia on the banks of the Nilüfer."
+      }
+    },
+    {
+      "id": "uludag",
+      "image": "/images/nearby/uludag.jpg",
+      "tone": "dusk",
+      "distance": "45 dk",
+      "tr": {
+        "title": "Uludağ",
+        "description": "Bulutların üzerinde yaylalar, kış sporları ve eşsiz manzaralar."
+      },
+      "en": {
+        "title": "Uludağ",
+        "description": "Highland meadows above the clouds and sweeping views."
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Base tokens & element defaults
+   ============================================================ */
+@layer base {
+  :root {
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --gutter: clamp(20px, 5vw, 72px);
+    --section-y: clamp(72px, 10vw, 160px);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-beige text-ink font-sans;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    @apply font-serif font-medium text-ink;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: theme("colors.orange.DEFAULT");
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.orange.DEFAULT");
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Respect reduced motion everywhere (Framer also checks this). */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* ============================================================
+   Reusable utilities
+   ============================================================ */
+@layer components {
+  .wrap {
+    width: min(100% - (var(--gutter) * 2), theme("maxWidth.wrap"));
+    margin-inline: auto;
+  }
+
+  .section-y {
+    padding-block: var(--section-y);
+  }
+
+  .lead {
+    @apply text-ink-soft;
+    font-size: clamp(18px, 2vw, 21px);
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  /* Photo gradient fallbacks (shown until the real image loads). */
+  .ph-fallback::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--ph-grad, linear-gradient(135deg, #5b7a55, #3e5f44 45%, #2c3f31));
+  }
+  .ph-fallback::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(120% 100% at 70% 10%, rgba(255, 255, 255, 0.1), transparent 55%),
+      radial-gradient(120% 120% at 30% 110%, rgba(0, 0, 0, 0.3), transparent 60%);
+    mix-blend-mode: multiply;
+    opacity: 0.55;
+  }
+  .tone-sunset { --ph-grad: linear-gradient(150deg, #3e5f44 0%, #a27b5c 48%, #d98324 100%); }
+  .tone-forest { --ph-grad: linear-gradient(160deg, #4d6b4f, #3e5f44 55%, #2c3f31); }
+  .tone-lake   { --ph-grad: linear-gradient(160deg, #6f8f7e, #3e5f44 60%, #28412f); }
+  .tone-warm   { --ph-grad: linear-gradient(150deg, #c9a279, #a27b5c 55%, #7c5a3e); }
+  .tone-fire   { --ph-grad: linear-gradient(160deg, #2c3f31, #6b3f23 60%, #d98324); }
+  .tone-dusk   { --ph-grad: linear-gradient(160deg, #2c3f31 0%, #56506a 55%, #d98324 120%); }
+
+  /* Hide scrollbar on horizontal rails while keeping scroll. */
+  .no-scrollbar { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.3) transparent; }
+}

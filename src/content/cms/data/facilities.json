@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "id": "electric",
+      "icon": "bolt",
+      "tr": "Elektrik Bağlantısı",
+      "en": "Electric Hook-up"
+    },
+    {
+      "id": "water",
+      "icon": "drop",
+      "tr": "Temiz Su",
+      "en": "Fresh Water"
+    },
+    {
+      "id": "shower",
+      "icon": "shower",
+      "tr": "Duş ve WC",
+      "en": "Showers & WC"
+    },
+    {
+      "id": "wifi",
+      "icon": "wifi",
+      "tr": "Wi-Fi",
+      "en": "Wi-Fi"
+    },
+    {
+      "id": "shared",
+      "icon": "users",
+      "tr": "Ortak Kullanım Alanları",
+      "en": "Shared Spaces"
+    },
+    {
+      "id": "secure",
+      "icon": "shield",
+      "tr": "Güvenli Alan",
+      "en": "Secure Grounds"
+    },
+    {
+      "id": "pets",
+      "icon": "paw",
+      "tr": "Evcil Hayvan Dostu",
+      "en": "Pet Friendly"
+    },
+    {
+      "id": "kitchen",
+      "icon": "flame",
+      "tr": "Açık Mutfak",
+      "en": "Open-air Kitchen"
+    }
+  ]
+}

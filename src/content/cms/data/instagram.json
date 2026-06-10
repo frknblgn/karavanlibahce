@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "ig-1",
+      "image": "/images/gallery/under-stars.jpg",
+      "tone": "fire"
+    },
+    {
+      "id": "ig-2",
+      "image": "/images/gallery/morning-light.jpg",
+      "tone": "forest"
+    },
+    {
+      "id": "ig-3",
+      "image": "/images/gallery/by-the-water.jpg",
+      "tone": "lake"
+    },
+    {
+      "id": "ig-4",
+      "image": "/images/gallery/along-trail.jpg",
+      "tone": "sunset"
+    },
+    {
+      "id": "ig-5",
+      "image": "/images/gallery/around-fire.jpg",
+      "tone": "fire"
+    },
+    {
+      "id": "ig-6",
+      "image": "/images/nearby/misi.jpg",
+      "tone": "warm"
+    },
+    {
+      "id": "ig-7",
+      "image": "/images/nearby/uludag.jpg",
+      "tone": "dusk"
+    },
+    {
+      "id": "ig-8",
+      "image": "/images/gallery/time-together.jpg",
+      "tone": "warm"
+    },
+    {
+      "id": "ig-9",
+      "image": "/images/nearby/dagyenice.jpg",
+      "tone": "lake"
+    },
+    {
+      "id": "ig-10",
+      "image": "/images/experience/caravan-stays.jpg",
+      "tone": "warm"
+    },
+    {
+      "id": "ig-11",
+      "image": "/images/gallery/golden-hour.jpg",
+      "tone": "dusk"
+    },
+    {
+      "id": "ig-12",
+      "image": "/images/gallery/into-trees.jpg",
+      "tone": "forest"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "items": [
+    {
+      "id": "own-caravan",
+      "tr": {
+        "q": "Kendi karavanımla gelebilir miyim?",
+        "a": "Elbette. Tüm parsellerimizde elektrik ve temiz su bağlantısı mevcuttur. Rezervasyon sırasında karavan ölçülerinizi paylaşmanız yeterli."
+      },
+      "en": {
+        "q": "Can I bring my own caravan?",
+        "a": "Of course. Every pitch has an electric and fresh-water hook-up. Just share your caravan dimensions when you book."
+      }
+    },
+    {
+      "id": "pets",
+      "tr": {
+        "q": "Evcil hayvanımı getirebilir miyim?",
+        "a": "Evet, dostlarımız her zaman hoş geldi. Ortak alanlarda tasmalı olmaları ve sahiplerinin yanında bulunmaları yeterli."
+      },
+      "en": {
+        "q": "Are pets welcome?",
+        "a": "Yes, your companions are always welcome. We simply ask that they stay leashed and beside you in shared areas."
+      }
+    },
+    {
+      "id": "reserve",
+      "tr": {
+        "q": "Rezervasyon nasıl yapılır?",
+        "a": "En hızlı yöntem WhatsApp üzerinden bize ulaşmanız. Tarihlerinizi yazın, uygunluk ve ödeme detaylarını anında paylaşalım."
+      },
+      "en": {
+        "q": "How do I reserve?",
+        "a": "The quickest way is to message us on WhatsApp. Send your dates and we'll confirm availability and payment right away."
+      }
+    },
+    {
+      "id": "food",
+      "tr": {
+        "q": "Alanda yemek imkanı var mı?",
+        "a": "Açık mutfak ve mangal alanlarımızı kullanabilirsiniz. Ayrıca yakın köylerde yerel lezzetler sunan kahvaltıcılar bulunur."
+      },
+      "en": {
+        "q": "Is there food on site?",
+        "a": "You're welcome to use our open-air kitchen and barbecue areas. Nearby villages also offer wonderful local breakfasts."
+      }
+    },
+    {
+      "id": "children",
+      "tr": {
+        "q": "Çocuklar için uygun mu?",
+        "a": "Kesinlikle. Geniş yeşil alanlarımız ve güvenli çevremiz aileler için idealdir. Çocuklar doğada özgürce vakit geçirebilir."
+      },
+      "en": {
+        "q": "Is it suitable for children?",
+        "a": "Absolutely. Our wide green spaces and secure grounds are ideal for families, with plenty of room for children to roam."
+      }
+    }
+  ]
+}

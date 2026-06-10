@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "experience": "Deneyim",
+    "facilities": "Olanaklar",
+    "gallery": "Galeri",
+    "pricing": "Konaklama",
+    "nearby": "Çevre",
+    "faq": "SSS",
+    "contact": "İletişim",
+    "blog": "Günlük",
+    "cta": "Rezervasyon"
+  },
+  "hero": {
+    "eyebrow": "Bursa · Doğa Kaçamağı",
+    "title": "Şehirden uzaklaşmak için çok uzağa gitmenize gerek yok",
+    "subtitle": "Bursa Karavanlı Bahçe'de doğayla yeniden bağlantı kurun.",
+    "primaryCta": "Rezervasyon Yap",
+    "secondaryCta": "Galeriyi İncele",
+    "scroll": "Keşfet",
+    "stats": [
+      {
+        "value": "1 saat",
+        "label": "Bursa'ya uzaklık"
+      },
+      {
+        "value": "12+",
+        "label": "Karavan parseli"
+      },
+      {
+        "value": "5 dakika",
+        "label": "Doğa yürüyüşüne"
+      }
+    ]
+  },
+  "experience": {
+    "eyebrow": "Deneyim",
+    "title": "Burada sizi neler bekliyor?",
+    "lead": "Bir karavan parkından çok daha fazlası. Yavaşlamak, nefes almak ve sevdiklerinizle gerçekten birlikte olmak için bir alan."
+  },
+  "facilities": {
+    "eyebrow": "Olanaklar",
+    "title": "Konfor, doğanın içinde",
+    "lead": "İhtiyacınız olan her şey düşünüldü; geri kalanı doğaya bırakıldı.",
+    "badgeTitle": "Her parselde",
+    "badgeSub": "Elektrik & temiz su"
+  },
+  "gallery": {
+    "eyebrow": "Galeri",
+    "title": "Bir bakışta huzur",
+    "lead": "Gün batımları, ateş başı sohbetler ve doğayla geçen anlar.",
+    "cta": "Instagram'da daha fazlası"
+  },
+  "nearby": {
+    "eyebrow": "Çevrede",
+    "title": "Keşfedilecek bir bölge",
+    "lead": "Bahçemiz, Bursa'nın en güzel doğa ve tarih noktalarına yalnızca birkaç dakika uzaklıkta."
+  },
+  "pricing": {
+    "eyebrow": "Konaklama",
+    "title": "Size uygun bir kaçamak",
+    "lead": "İster karavanınızla, ister çadırınızla, ister sadece bir günlüğüne. Detaylar ve güncel uygunluk için bize ulaşın.",
+    "cta": "Bilgi Al",
+    "tag": "En Sevilen",
+    "note": "Detaylı bilgi, müsaitlik ve fiyat teklifi için WhatsApp'tan bize yazmanız yeterli; aynı gün dönüş yapıyoruz."
+  },
+  "reviews": {
+    "eyebrow": "Misafir Deneyimleri",
+    "title": "Misafirlerimizden"
+  },
+  "faq": {
+    "eyebrow": "Sık Sorulanlar",
+    "title": "Merak ettikleriniz",
+    "asideTitle": "Sorunuz mu var?",
+    "asideText": "Aklınıza takılan her şey için WhatsApp'tan bize yazın. Genellikle dakikalar içinde yanıt veriyoruz.",
+    "asideCta": "Bize Yazın"
+  },
+  "instagram": {
+    "eyebrow": "Sosyal",
+    "title": "Bahçeden anlar"
+  },
+  "contact": {
+    "eyebrow": "İletişim",
+    "title": "Yeriniz sizi bekliyor",
+    "lead": "Rezervasyon ve sorularınız için en hızlı yol WhatsApp. Bir mesaj uzağınızdayız.",
+    "phone": "Telefon",
+    "whatsapp": "WhatsApp",
+    "address": "Adres",
+    "instagram": "Instagram",
+    "primaryCta": "WhatsApp'tan Rezervasyon",
+    "secondaryCta": "Instagram'da Takip Et",
+    "mapTitle": "Bursa Karavanlı Bahçe",
+    "mapSub": "Haritada görüntüle"
+  },
+  "footer": {
+    "tagline": "Doğayla yeniden bağlantı kurun.",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "whatsappFab": "WhatsApp'tan Rezervasyon",
+  "blog": {
+    "eyebrow": "Günlük",
+    "title": "Doğadan notlar",
+    "lead": "Kaçamak fikirleri, çevre rehberleri ve bahçeden hikâyeler.",
+    "readMore": "Yazıyı oku",
+    "backToList": "Tüm yazılar",
+    "minRead": "dk okuma"
+  }
+}
