@@ -4,6 +4,10 @@ This project uses Decap CMS. The admin application is available at `/admin` and
 stores every edit as a Git commit. The website continues to render static pages
 from JSON and MDX files, so there is no runtime database or CMS server.
 
+The admin HTML declares `/admin/config.yml` explicitly with `cms-config-url`.
+This is required because Next.js normalizes `/admin/` to `/admin`; without the
+absolute config URL, Decap may resolve its default relative path as `/config.yml`.
+
 ## One-time GitHub and Vercel setup
 
 1. Push the project to GitHub.
