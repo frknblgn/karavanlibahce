@@ -31,11 +31,14 @@ export interface GalleryItem {
   id: string;
   image: string;
   tone: Tone;
+  category?: GalleryCategory;
   tr: string;
   en: string;
   /** masonry span hint */
   tall?: boolean;
 }
+
+export type GalleryCategory = "caravan" | "nature" | "fire" | "nearby";
 
 export interface NearbyItem {
   id: string;

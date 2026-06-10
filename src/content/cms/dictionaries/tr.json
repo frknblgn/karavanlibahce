@@ -91,6 +91,40 @@
     "mapTitle": "Bursa Karavanlı Bahçe",
     "mapSub": "Haritada görüntüle"
   },
+  "homeTeasers": {
+    "galleryEyebrow": "Galeri",
+    "galleryTitle": "Galeriyi Keşfet",
+    "galleryLead": "Bahçeden gün batımları, doğa manzaraları ve birlikte geçirilen anlar.",
+    "galleryCta": "Tüm Galeriyi Gör",
+    "contactEyebrow": "Rezervasyon",
+    "contactTitle": "Rezervasyon ve İletişim",
+    "contactLead": "Tarihlerinizi paylaşın; uygunluk, konaklama seçenekleri ve merak ettikleriniz için size yardımcı olalım.",
+    "contactCta": "İletişime Geç"
+  },
+  "galleryPage": {
+    "eyebrow": "Galeri",
+    "title": "Bahçeden anlar",
+    "lead": "Doğanın ritmini, ateş başı sohbetlerini ve karavan yaşamının sakinliğini keşfedin.",
+    "all": "Tümü",
+    "caravan": "Karavan Alanı",
+    "nature": "Doğa",
+    "fire": "Ateş Başı",
+    "nearby": "Çevre",
+    "ctaEyebrow": "Sizi Bekliyoruz",
+    "ctaTitle": "Bu atmosferi yerinde yaşayın",
+    "ctaText": "Uygun tarihler ve konaklama seçenekleri için bize ulaşın.",
+    "ctaButton": "Rezervasyon Yap"
+  },
+  "contactPage": {
+    "reservationEyebrow": "Rezervasyon Bilgisi",
+    "reservationTitle": "Kaçamağınızı birlikte planlayalım",
+    "reservationText": "Tarihlerinizi, kişi sayısını ve karavan ya da çadır tercihinizi WhatsApp üzerinden paylaşın. Size uygun seçeneklerle aynı gün dönüş yapalım.",
+    "reservationCta": "WhatsApp'tan Bilgi Al",
+    "faqEyebrow": "Merak Ettikleriniz",
+    "faqTitle": "Gelmeden önce bilmeniz gerekenler",
+    "faqText": "Karavan bağlantıları, evcil hayvanlar, çocuklar ve rezervasyon süreci hakkında sık sorulan sorulara göz atın.",
+    "faqCta": "Sık Sorulanlara Git"
+  },
   "footer": {
     "tagline": "Doğayla yeniden bağlantı kurun.",
     "rights": "Tüm hakları saklıdır."

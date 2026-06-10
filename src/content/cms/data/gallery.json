@@ -4,6 +4,7 @@
       "id": "under-stars",
       "image": "/images/gallery/under-stars.jpg",
       "tone": "fire",
+      "category": "fire",
       "tr": "Yıldızların altında",
       "en": "Under the stars",
       "tall": true
@@ -12,6 +13,7 @@
       "id": "morning-light",
       "image": "/images/gallery/morning-light.jpg",
       "tone": "forest",
+      "category": "nature",
       "tr": "Sabah ışığı",
       "en": "Morning light"
     },
@@ -19,6 +21,7 @@
       "id": "caravan-spot",
       "image": "/images/gallery/caravan-spot.jpg",
       "tone": "warm",
+      "category": "caravan",
       "tr": "Karavan köşesi",
       "en": "The caravan spot"
     },
@@ -26,6 +29,7 @@
       "id": "by-the-water",
       "image": "/images/gallery/by-the-water.jpg",
       "tone": "lake",
+      "category": "nearby",
       "tr": "Göl kenarı",
       "en": "By the water",
       "tall": true
@@ -34,6 +38,7 @@
       "id": "golden-hour",
       "image": "/images/gallery/golden-hour.jpg",
       "tone": "dusk",
+      "category": "nature",
       "tr": "Gün batımı",
       "en": "Golden hour"
     },
@@ -41,6 +46,7 @@
       "id": "around-fire",
       "image": "/images/gallery/around-fire.jpg",
       "tone": "fire",
+      "category": "fire",
       "tr": "Ateş başı sohbetler",
       "en": "Around the fire"
     },
@@ -48,6 +54,7 @@
       "id": "into-trees",
       "image": "/images/gallery/into-trees.jpg",
       "tone": "forest",
+      "category": "nature",
       "tr": "Orman manzarası",
       "en": "Into the trees",
       "tall": true
@@ -56,6 +63,7 @@
       "id": "along-trail",
       "image": "/images/gallery/along-trail.jpg",
       "tone": "sunset",
+      "category": "nearby",
       "tr": "Patika boyunca",
       "en": "Along the trail"
     },
@@ -63,6 +71,7 @@
       "id": "time-together",
       "image": "/images/gallery/time-together.jpg",
       "tone": "warm",
+      "category": "caravan",
       "tr": "Birlikte zaman",
       "en": "Time together"
     }

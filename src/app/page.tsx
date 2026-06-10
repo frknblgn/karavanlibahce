@@ -6,13 +6,11 @@ import { LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 import { Hero } from "@/components/sections/Hero";
 import { Experience } from "@/components/sections/Experience";
 import { Facilities } from "@/components/sections/Facilities";
-import { Gallery } from "@/components/sections/Gallery";
 import { Nearby } from "@/components/sections/Nearby";
 import { Pricing } from "@/components/sections/Pricing";
 import { Reviews } from "@/components/sections/Reviews";
 import { Faq } from "@/components/sections/Faq";
-import { Instagram } from "@/components/sections/Instagram";
-import { Contact } from "@/components/sections/Contact";
+import { HomeTeasers } from "@/components/sections/HomeTeasers";
 
 export default function HomePage() {
   return (
@@ -23,13 +21,11 @@ export default function HomePage() {
         <Hero />
         <Experience />
         <Facilities />
-        <Gallery />
         <Nearby />
         <Pricing />
         <Reviews />
         <Faq />
-        <Instagram />
-        <Contact />
+        <HomeTeasers />
       </main>
       <Footer />
       <FloatingWhatsApp />

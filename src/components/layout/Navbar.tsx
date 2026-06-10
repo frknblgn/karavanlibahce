@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { navLinks } from "@/config/navigation";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
@@ -53,7 +52,7 @@ export function Navbar() {
       <div className="flex items-center gap-4">
         <LanguageToggle scrolled={scrolled} />
         <a
-          href="#contact"
+          href="/contact"
           className={cn(
             "hidden rounded-full border px-5 py-[11px] text-[14px] font-semibold transition-colors sm:inline-flex",
             scrolled
@@ -99,13 +98,6 @@ export function Navbar() {
                 {t.nav[l.key as keyof typeof t.nav]}
               </a>
             ))}
-            <Link
-              href="/blog"
-              onClick={() => setOpen(false)}
-              className="font-serif text-2xl text-white"
-            >
-              {t.nav.blog}
-            </Link>
           </motion.div>
         )}
       </AnimatePresence>

@@ -109,9 +109,13 @@ collections:
               - { label: Default Social Image, name: defaultImage, widget: image, media_folder: /public/images/og, public_folder: /images/og }
               - { label: Blog SEO Title, name: blogTitle, widget: string }
               - { label: Blog SEO Description, name: blogDescription, widget: text }
+              - { label: Gallery SEO Title, name: galleryTitle, widget: string }
+              - { label: Gallery SEO Description, name: galleryDescription, widget: text }
+              - { label: Contact SEO Title, name: contactTitle, widget: string }
+              - { label: Contact SEO Description, name: contactDescription, widget: text }
 
   - name: homepage_text
-    label: Homepage Text
+    label: Site and Page Text
     files:
       - name: turkish
         label: Turkish Text
@@ -218,6 +222,46 @@ collections:
               - { label: Secondary CTA, name: secondaryCta, widget: string }
               - { label: Map Title, name: mapTitle, widget: string }
               - { label: Map Subtitle, name: mapSub, widget: string }
+          - label: Homepage Teasers
+            name: homeTeasers
+            widget: object
+            fields:
+              - { label: Gallery Eyebrow, name: galleryEyebrow, widget: string }
+              - { label: Gallery Title, name: galleryTitle, widget: string }
+              - { label: Gallery Description, name: galleryLead, widget: text }
+              - { label: Gallery CTA, name: galleryCta, widget: string }
+              - { label: Contact Eyebrow, name: contactEyebrow, widget: string }
+              - { label: Contact Title, name: contactTitle, widget: string }
+              - { label: Contact Description, name: contactLead, widget: text }
+              - { label: Contact CTA, name: contactCta, widget: string }
+          - label: Gallery Page
+            name: galleryPage
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: lead, widget: text }
+              - { label: All Category, name: all, widget: string }
+              - { label: Caravan Category, name: caravan, widget: string }
+              - { label: Nature Category, name: nature, widget: string }
+              - { label: Fireside Category, name: fire, widget: string }
+              - { label: Nearby Category, name: nearby, widget: string }
+              - { label: CTA Eyebrow, name: ctaEyebrow, widget: string }
+              - { label: CTA Title, name: ctaTitle, widget: string }
+              - { label: CTA Description, name: ctaText, widget: text }
+              - { label: CTA Button, name: ctaButton, widget: string }
+          - label: Contact Page
+            name: contactPage
+            widget: object
+            fields:
+              - { label: Reservation Eyebrow, name: reservationEyebrow, widget: string }
+              - { label: Reservation Title, name: reservationTitle, widget: string }
+              - { label: Reservation Description, name: reservationText, widget: text }
+              - { label: Reservation CTA, name: reservationCta, widget: string }
+              - { label: FAQ Eyebrow, name: faqEyebrow, widget: string }
+              - { label: FAQ Title, name: faqTitle, widget: string }
+              - { label: FAQ Description, name: faqText, widget: text }
+              - { label: FAQ CTA, name: faqCta, widget: string }
           - label: Footer
             name: footer
             widget: object
@@ -296,6 +340,7 @@ collections:
               - { label: ID, name: id, widget: string }
               - { label: Image, name: image, widget: image, media_folder: /public/images/gallery, public_folder: /images/gallery }
               - { label: Tone, name: tone, widget: select, options: [sunset, forest, lake, warm, fire, dusk] }
+              - { label: Category, name: category, widget: select, options: [{ label: Caravan Area, value: caravan }, { label: Nature, value: nature }, { label: Fireside, value: fire }, { label: Nearby, value: nearby }] }
               - { label: Turkish Alt Text, name: tr, widget: string }
               - { label: English Alt Text, name: en, widget: string }
               - { label: Tall Image, name: tall, widget: boolean, required: false }

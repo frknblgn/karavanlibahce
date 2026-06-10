@@ -77,6 +77,10 @@
     },
     "defaultImage": "/images/og/og-default.jpg",
     "blogTitle": "Günlük",
-    "blogDescription": "Kaçamak fikirleri, çevre rehberleri ve Bursa Karavanlı Bahçe'den hikâyeler."
+    "blogDescription": "Kaçamak fikirleri, çevre rehberleri ve Bursa Karavanlı Bahçe'den hikâyeler.",
+    "galleryTitle": "Galeri",
+    "galleryDescription": "Bursa Karavanlı Bahçe'den karavan alanı, doğa, ateş başı ve çevre fotoğrafları.",
+    "contactTitle": "Rezervasyon ve İletişim",
+    "contactDescription": "Bursa Karavanlı Bahçe rezervasyon, WhatsApp, telefon, Instagram, adres ve yol tarifi bilgileri."
   }
 }

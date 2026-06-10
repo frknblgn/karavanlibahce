@@ -5,8 +5,10 @@ import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Photo } from "@/components/ui/Photo";
 import { Reveal } from "@/components/ui/Reveal";
-import { siteConfig } from "@/config/site.config";
+import { Button } from "@/components/ui/Button";
+import { waLink } from "@/config/site.config";
 import { gallery } from "@/data/gallery";
+import type { GalleryCategory } from "@/types";
 import {
   ArrowIcon,
   ExpandIcon,
@@ -17,13 +19,23 @@ import {
 
 export function Gallery() {
   const { t, locale } = useLanguage();
+  const [category, setCategory] = useState<GalleryCategory | "all">("all");
   const [index, setIndex] = useState<number | null>(null);
+  const filtered =
+    category === "all" ? gallery : gallery.filter((item) => item.category === category);
+  const categories: Array<GalleryCategory | "all"> = [
+    "all",
+    "caravan",
+    "nature",
+    "fire",
+    "nearby",
+  ];
 
   const close = useCallback(() => setIndex(null), []);
   const go = useCallback(
     (dir: number) =>
-      setIndex((i) => (i === null ? i : (i + dir + gallery.length) % gallery.length)),
-    [],
+      setIndex((i) => (i === null ? i : (i + dir + filtered.length) % filtered.length)),
+    [filtered.length],
   );
 
   useEffect(() => {
@@ -41,33 +53,41 @@ export function Gallery() {
     };
   }, [index, close, go]);
 
-  const active = index === null ? null : gallery[index];
+  const active = index === null ? null : filtered[index];
 
   return (
     <section id="gallery" data-screen-label="Gallery" className="section-y">
       <div className="wrap">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <SectionHeading
-            eyebrow={t.gallery.eyebrow}
-            title={t.gallery.title}
-            lead={t.gallery.lead}
+            eyebrow={t.galleryPage.eyebrow}
+            title={t.galleryPage.title}
+            lead={t.galleryPage.lead}
           />
-          <Reveal>
-            <a
-              href={siteConfig.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 text-[15px] font-semibold text-green"
-            >
-              {t.gallery.cta}
-              <ArrowIcon className="h-4 w-4 transition-transform duration-300 ease-brand group-hover:translate-x-1" />
-            </a>
+          <Reveal className="flex flex-wrap gap-2">
+            {categories.map((key) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => {
+                  setCategory(key);
+                  setIndex(null);
+                }}
+                className={`rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors ${
+                  category === key
+                    ? "border-green bg-green text-white"
+                    : "border-line bg-cream text-ink-soft hover:border-green hover:text-green"
+                }`}
+              >
+                {t.galleryPage[key]}
+              </button>
+            ))}
           </Reveal>
         </div>
 
         {/* Masonry via CSS columns */}
         <div className="mt-[clamp(40px,5vw,60px)] [column-gap:18px] sm:columns-2 lg:columns-3">
-          {gallery.map((g, i) => (
+          {filtered.map((g, i) => (
             <button
               key={g.id}
               type="button"
@@ -94,6 +114,22 @@ export function Gallery() {
             </button>
           ))}
         </div>
+
+        <Reveal className="mt-[clamp(56px,8vw,100px)] rounded-lg bg-green-deep px-7 py-[clamp(40px,6vw,72px)] text-center text-white">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-soft">
+            {t.galleryPage.ctaEyebrow}
+          </p>
+          <h2 className="mx-auto mt-4 max-w-[720px] text-[clamp(32px,5vw,56px)] text-white">
+            {t.galleryPage.ctaTitle}
+          </h2>
+          <p className="mx-auto mt-4 max-w-[560px] text-[16px] text-white/75">
+            {t.galleryPage.ctaText}
+          </p>
+          <Button href={waLink()} variant="whatsapp" className="mt-7">
+            {t.galleryPage.ctaButton}
+            <ArrowIcon />
+          </Button>
+        </Reveal>
       </div>
 
       {/* Lightbox */}

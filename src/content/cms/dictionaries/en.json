@@ -91,6 +91,40 @@
     "mapTitle": "Bursa Karavanlı Bahçe",
     "mapSub": "View on map"
   },
+  "homeTeasers": {
+    "galleryEyebrow": "Gallery",
+    "galleryTitle": "Explore the Gallery",
+    "galleryLead": "Sunsets, nature views and moments spent together in the garden.",
+    "galleryCta": "View Full Gallery",
+    "contactEyebrow": "Reservations",
+    "contactTitle": "Reservations and Contact",
+    "contactLead": "Share your dates and let us help with availability, stay options and your questions.",
+    "contactCta": "Get in Touch"
+  },
+  "galleryPage": {
+    "eyebrow": "Gallery",
+    "title": "Moments from the garden",
+    "lead": "Discover nature's rhythm, fireside conversations and the calm of caravan life.",
+    "all": "All",
+    "caravan": "Caravan Area",
+    "nature": "Nature",
+    "fire": "Fireside",
+    "nearby": "Nearby",
+    "ctaEyebrow": "Come Stay",
+    "ctaTitle": "Experience this atmosphere in person",
+    "ctaText": "Contact us for available dates and stay options.",
+    "ctaButton": "Make a Reservation"
+  },
+  "contactPage": {
+    "reservationEyebrow": "Reservation Information",
+    "reservationTitle": "Let's plan your escape together",
+    "reservationText": "Share your dates, guest count, and caravan or tent preference on WhatsApp. We will reply with suitable options the same day.",
+    "reservationCta": "Ask on WhatsApp",
+    "faqEyebrow": "Good to Know",
+    "faqTitle": "Everything to know before you arrive",
+    "faqText": "Read about caravan connections, pets, children and the reservation process.",
+    "faqCta": "View Frequently Asked Questions"
+  },
   "footer": {
     "tagline": "Reconnect with nature.",
     "rights": "All rights reserved."

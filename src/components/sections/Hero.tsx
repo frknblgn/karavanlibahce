@@ -69,10 +69,10 @@ export function Hero() {
             {t.hero.subtitle}
           </p>
           <div className="mt-[30px] flex flex-wrap justify-center gap-3.5">
-            <Button href="#contact" variant="primary">
+            <Button href="/contact" variant="primary">
               {t.hero.primaryCta}
             </Button>
-            <Button href="#gallery" variant="ghost">
+            <Button href="/gallery" variant="ghost">
               {t.hero.secondaryCta}
             </Button>
           </div>
