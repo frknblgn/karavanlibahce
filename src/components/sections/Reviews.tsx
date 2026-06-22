@@ -6,10 +6,22 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { reviews } from "@/data/reviews";
 import { siteConfig } from "@/config/site.config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsCollection, CmsReview } from "@/lib/cms-api";
 
 export function Reviews() {
   const { t, locale } = useLanguage();
   const reduce = useReducedMotion();
+  const cmsReviews = useCmsData<CmsCollection<CmsReview>>("/reviews/", { items: [] });
+  const items = cmsReviews.items.length
+    ? cmsReviews.items.map((item, index) => ({
+        id: String(item.id),
+        name: item.name,
+        color: ["#A27B5C", "#3E5F44", "#D98324"][index % 3],
+        role: { tr: item.source, en: item.source },
+        text: { tr: item.comment, en: item.comment },
+      }))
+    : reviews;
   const showRating =
     siteConfig.reviews.show && siteConfig.reviews.score && siteConfig.reviews.count;
 
@@ -39,7 +51,7 @@ export function Reviews() {
           viewport={viewportOnce}
           className="mt-[clamp(40px,5vw,56px)] grid grid-cols-1 gap-[22px] md:grid-cols-3"
         >
-          {reviews.map((r) => (
+          {items.map((r) => (
             <motion.article
               key={r.id}
               variants={reduce ? undefined : fadeUp}

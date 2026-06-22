@@ -1,31 +1,46 @@
-# Content Management
+# Wagtail CMS
 
-This project uses Decap CMS. The admin application is available at `/admin` and
-stores every edit as a Git commit. The website continues to render static pages
-from JSON and MDX files, so there is no runtime database or CMS server.
+Decap CMS has been removed. Content is managed by the Django/Wagtail app in
+`cms/`. The public Next.js site consumes the Wagtail JSON API and retains local
+fallback content for CMS availability failures.
 
-The admin HTML declares `/admin/config.yml` explicitly with `cms-config-url`.
-This is required because Next.js normalizes `/admin/` to `/admin`; without the
-absolute config URL, Decap may resolve its default relative path as `/config.yml`.
+## Local CMS
 
-## One-time GitHub and Vercel setup
+```powershell
+cd cms
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell -c "from content.seed import seed; print(seed())"
+python manage.py createsuperuser
+python manage.py runserver
+```
 
-1. Push the project to GitHub.
-2. Replace `REPLACE_WITH_GITHUB_OWNER/REPLACE_WITH_REPOSITORY` in
-   `public/admin/config.yml` with the GitHub repository.
-3. Set `site_url` and `display_url` in that file to the production domain.
-4. Configure a Decap-compatible GitHub OAuth provider and set its `base_url`
-   under the `backend` block. Vercel does not provide Git Gateway, so the OAuth
-   provider is the only small external authentication piece.
-5. Add the non-technical editor as a GitHub collaborator, then visit `/admin`.
+Open Wagtail at `http://localhost:8000/admin/`. The API is available below
+`http://localhost:8000/api/`.
 
-For local CMS editing, run `npx decap-server`, add `local_backend: true` to the
-admin config while developing, and run the Next.js development server.
+## First content entry
 
-## Content layout
+1. If you are not using the seed command, create one **HomePage** beneath the Wagtail root page.
+2. Add the hero fields, then create Facilities, Nearby Attractions, Gallery
+   Images, Reviews, and FAQs from the Snippets menu.
+3. Configure Site Settings and Contact Settings for shared business details.
+4. Add BlogPost pages beneath HomePage and publish them. Only active snippets
+   and published blog posts are returned by the public API.
 
-- `src/content/cms/site.json`: contact, social links, key images, and SEO.
-- `src/content/cms/dictionaries/*.json`: all bilingual homepage text.
-- `src/content/cms/data/*.json`: repeatable homepage cards and images.
-- `src/content/blog/*.mdx`: statically generated blog posts.
-- `public/images/*`: uploaded images, organized by content type.
+For this repository, the seed command above imports the existing fallback JSON,
+local images, and MDX blog posts so the panel starts with the current site content.
+
+## Deployment
+
+Deploy `cms/` to Render using `cms/render.yaml`, then set its required environment
+variables. In Vercel set:
+
+```text
+NEXT_PUBLIC_CMS_API_URL=https://your-wagtail-app.onrender.com/api
+```
+
+Configure Cloudinary credentials in Render for production media uploads.

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site.config";
 import { getAllSlugs } from "@/lib/blog";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
   const now = new Date();
 
@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
 
-  const blogRoutes: MetadataRoute.Sitemap = getAllSlugs().map((slug) => ({
+  const blogRoutes: MetadataRoute.Sitemap = (await getAllSlugs()).map((slug) => ({
     url: `${base}/blog/${slug}`,
     lastModified: now,
     changeFrequency: "monthly",

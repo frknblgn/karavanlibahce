@@ -1,0 +1,16 @@
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path("site-settings/", views.site_settings),
+    path("home/", views.home),
+    path("facilities/", views.facilities),
+    path("nearby-attractions/", views.nearby_attractions),
+    path("gallery/", views.gallery),
+    path("blog/", views.blog_list),
+    path("blog/<slug:slug>/", views.blog_detail),
+    path("reviews/", views.reviews),
+    path("faqs/", views.faqs),
+    path("contact/", views.contact),
+]

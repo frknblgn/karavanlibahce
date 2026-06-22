@@ -6,15 +6,23 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon, InstagramIcon, PhoneIcon, PinIcon, ArrowIcon } from "@/components/icons";
 import { siteConfig, waLink, telLink } from "@/config/site.config";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsContact } from "@/lib/cms-api";
 
 export function Contact() {
   const { t } = useLanguage();
+  const cmsContact = useCmsData<CmsContact | null>("/contact/", null);
+  const phone = cmsContact?.phone || siteConfig.contact.phone;
+  const whatsapp = cmsContact?.whatsapp_number || siteConfig.contact.whatsapp;
+  const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`;
+  const address = cmsContact?.address || siteConfig.address.full;
+  const mapsUrl = cmsContact?.google_maps_embed_url || siteConfig.mapsUrl;
 
   const rows = [
-    { icon: <WhatsAppIcon className="h-full w-full" />, label: t.contact.whatsapp, value: siteConfig.contact.phone, href: waLink(), external: true },
-    { icon: <PhoneIcon className="h-full w-full" />, label: t.contact.phone, value: siteConfig.contact.phone, href: telLink(), external: false },
+    { icon: <WhatsAppIcon className="h-full w-full" />, label: t.contact.whatsapp, value: phone, href: whatsappLink, external: true },
+    { icon: <PhoneIcon className="h-full w-full" />, label: t.contact.phone, value: phone, href: `tel:${phone.replace(/[^\d+]/g, "")}`, external: false },
     { icon: <InstagramIcon className="h-full w-full" />, label: t.contact.instagram, value: siteConfig.social.instagramHandle, href: siteConfig.social.instagram, external: true },
-    { icon: <PinIcon className="h-full w-full" />, label: t.contact.address, value: siteConfig.address.full, href: siteConfig.mapsUrl, external: true },
+    { icon: <PinIcon className="h-full w-full" />, label: t.contact.address, value: address, href: mapsUrl, external: true },
   ];
 
   return (
@@ -22,8 +30,8 @@ export function Contact() {
       <div className="wrap grid items-stretch gap-[clamp(36px,5vw,72px)] lg:grid-cols-2">
         <Reveal>
           <Eyebrow light>{t.contact.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-[clamp(34px,5vw,56px)] text-white">{t.contact.title}</h2>
-          <p className="lead mt-5 !text-white/80">{t.contact.lead}</p>
+          <h2 className="mt-4 text-[clamp(34px,5vw,56px)] text-white">{cmsContact?.heading || t.contact.title}</h2>
+          <p className="lead mt-5 !text-white/80">{cmsContact?.description || t.contact.lead}</p>
 
           <div className="mt-10 grid gap-1">
             {rows.map((r) => (
@@ -45,7 +53,7 @@ export function Contact() {
           </div>
 
           <div className="mt-9 flex flex-wrap gap-3.5">
-            <Button href={waLink()} variant="whatsapp">
+            <Button href={whatsappLink} variant="whatsapp">
               <WhatsAppIcon className="h-[18px] w-[18px]" />
               {t.contact.primaryCta}
             </Button>
@@ -59,7 +67,7 @@ export function Contact() {
             Swap for an <iframe> embed or a Map component when ready. */}
         <Reveal>
           <a
-            href={siteConfig.mapsUrl}
+            href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t.contact.mapSub}

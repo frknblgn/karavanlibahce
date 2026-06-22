@@ -7,9 +7,12 @@ import { Photo } from "@/components/ui/Photo";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { siteConfig } from "@/config/site.config";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsHome } from "@/lib/cms-api";
 
 export function Hero() {
   const { t } = useLanguage();
+  const home = useCmsData<CmsHome | null>("/home/", null);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
 
@@ -32,7 +35,7 @@ export function Hero() {
         className="absolute inset-x-0 -inset-y-[8%]"
       >
         <Photo
-          src={siteConfig.hero.image}
+          src={home?.hero_image || siteConfig.hero.image}
           alt={siteConfig.hero.alt}
           tone="warm"
           priority
@@ -63,17 +66,17 @@ export function Hero() {
             {t.hero.eyebrow}
           </Eyebrow>
           <h1 className="mt-5 text-[clamp(36px,5.4vw,74px)] font-medium leading-[1.04] text-white">
-            {t.hero.title}
+            {home?.hero_title || t.hero.title}
           </h1>
           <p className="lead mt-[22px] max-w-[600px] !text-white/90">
-            {t.hero.subtitle}
+            {home?.hero_subtitle || home?.hero_description || t.hero.subtitle}
           </p>
           <div className="mt-[30px] flex flex-wrap justify-center gap-3.5">
-            <Button href="/contact" variant="primary">
-              {t.hero.primaryCta}
+            <Button href={home?.primary_cta_url || "/contact"} variant="primary">
+              {home?.primary_cta_label || t.hero.primaryCta}
             </Button>
-            <Button href="/gallery" variant="ghost">
-              {t.hero.secondaryCta}
+            <Button href={home?.secondary_cta_url || "/gallery"} variant="ghost">
+              {home?.secondary_cta_label || t.hero.secondaryCta}
             </Button>
           </div>
 

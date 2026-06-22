@@ -72,6 +72,13 @@ Push to GitHub → **Import Project** in Vercel → set `NEXT_PUBLIC_SITE_URL` �
 Deploy. No extra configuration needed. `sitemap.xml` and `robots.txt` are generated
 automatically by the App Router.
 
+## Wagtail CMS
+
+Decap CMS has been removed. The Django/Wagtail project lives in `cms/`; run its
+local setup, create an admin user, and configure Render/Cloudinary using
+[`docs/CMS.md`](./docs/CMS.md). Set `NEXT_PUBLIC_CMS_API_URL` to
+`http://localhost:8000/api` locally or your Render `/api` URL in Vercel.
+
 ## i18n note
 
 Language is handled with a lightweight context (`LanguageProvider`) + typed

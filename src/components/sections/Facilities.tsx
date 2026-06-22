@@ -7,9 +7,21 @@ import { Photo } from "@/components/ui/Photo";
 import { Icon } from "@/components/icons";
 import { facilities } from "@/data/facilities";
 import { siteConfig } from "@/config/site.config";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsCollection, CmsFacility } from "@/lib/cms-api";
+import type { IconName } from "@/types";
 
 export function Facilities() {
   const { t, locale } = useLanguage();
+  const cmsFacilities = useCmsData<CmsCollection<CmsFacility>>("/facilities/", { items: [] });
+  const items = cmsFacilities.items.length
+    ? cmsFacilities.items.map((item, index) => ({
+        id: String(item.id),
+        icon: (item.icon_name || facilities[index]?.icon || "bolt") as IconName,
+        tr: item.title,
+        en: item.title,
+      }))
+    : facilities;
 
   return (
     <section id="facilities" data-screen-label="Facilities" className="section-y bg-cream">
@@ -38,7 +50,7 @@ export function Facilities() {
           <p className="lead mt-[18px] max-w-[460px]">{t.facilities.lead}</p>
 
           <div className="mt-[38px] grid grid-cols-1 gap-x-9 sm:grid-cols-2">
-            {facilities.map((f) => (
+            {items.map((f) => (
               <div
                 key={f.id}
                 className="flex items-center gap-4 border-b border-line px-1 py-[18px]"

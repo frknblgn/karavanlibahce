@@ -32,3 +32,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Django / Wagtail
+cms/.env
+cms/media/
+cms/staticfiles/
+cms/db.sqlite3
+cms/__pycache__/
+cms/**/__pycache__/
+*.py[cod]
+
+cms/.venv/

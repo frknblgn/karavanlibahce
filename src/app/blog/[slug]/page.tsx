@@ -17,12 +17,12 @@ interface Params {
   params: { slug: string };
 }
 
-export function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getAllSlugs()).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: Params): Metadata {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug);
   if (!post) return {};
   return buildMetadata({
     title: post.seoTitle ?? post.title,
@@ -34,8 +34,8 @@ export function generateMetadata({ params }: Params): Metadata {
   });
 }
 
-export default function BlogPostPage({ params }: Params) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: Params) {
+  const post = await getPostBySlug(params.slug);
   if (!post) notFound();
 
   return (

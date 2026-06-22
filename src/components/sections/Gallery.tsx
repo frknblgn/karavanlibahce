@@ -7,8 +7,10 @@ import { Photo } from "@/components/ui/Photo";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { waLink } from "@/config/site.config";
-import { gallery } from "@/data/gallery";
+import { gallery as fallbackGallery } from "@/data/gallery";
 import type { GalleryCategory } from "@/types";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsCollection, CmsGalleryImage } from "@/lib/cms-api";
 import {
   ArrowIcon,
   ExpandIcon,
@@ -19,6 +21,18 @@ import {
 
 export function Gallery() {
   const { t, locale } = useLanguage();
+  const cmsGallery = useCmsData<CmsCollection<CmsGalleryImage>>("/gallery/", { items: [] });
+  const gallery = cmsGallery.items.length
+    ? cmsGallery.items.map((item, index) => ({
+        id: String(item.id),
+        image: item.image || fallbackGallery[index]?.image || "/images/gallery/under-stars.jpg",
+        tone: "forest" as const,
+        category: item.category as GalleryCategory,
+        tr: item.alt_text || item.title,
+        en: item.alt_text || item.title,
+        tall: index % 4 === 0,
+      }))
+    : fallbackGallery;
   const [category, setCategory] = useState<GalleryCategory | "all">("all");
   const [index, setIndex] = useState<number | null>(null);
   const filtered =

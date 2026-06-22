@@ -9,9 +9,19 @@ import { WhatsAppIcon } from "@/components/icons";
 import { faq } from "@/data/faq";
 import { waLink } from "@/config/site.config";
 import { cn } from "@/lib/utils";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsCollection, CmsFaq } from "@/lib/cms-api";
 
 export function Faq() {
   const { t, locale } = useLanguage();
+  const cmsFaqs = useCmsData<CmsCollection<CmsFaq>>("/faqs/", { items: [] });
+  const items = cmsFaqs.items.length
+    ? cmsFaqs.items.map((item) => ({
+        id: String(item.id),
+        tr: { q: item.question, a: item.answer.replace(/<[^>]*>/g, "") },
+        en: { q: item.question, a: item.answer.replace(/<[^>]*>/g, "") },
+      }))
+    : faq;
   const [open, setOpen] = useState<string | null>(faq[0]?.id ?? null);
 
   return (
@@ -34,7 +44,7 @@ export function Faq() {
         </Reveal>
 
         <Reveal className="border-t border-line">
-          {faq.map((item) => {
+          {items.map((item) => {
             const isOpen = open === item.id;
             return (
               <div key={item.id} className="border-b border-line">

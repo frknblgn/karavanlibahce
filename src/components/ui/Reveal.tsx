@@ -43,7 +43,8 @@ export function Reveal({
   return (
     <motion.div
       className={className}
-      initial="hidden"
+      // Keep server-rendered content visible if client-side motion cannot hydrate.
+      initial={false}
       whileInView="show"
       viewport={{ ...viewportOnce, once }}
       variants={variants}
