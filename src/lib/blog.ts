@@ -16,6 +16,11 @@ function readSlugs(): string[] {
 }
 
 function cmsToPost(post: CmsBlogPost): BlogPost {
+  const content = post.body
+    .replace(/^<p>/, "")
+    .replace(/<\/p>$/, "")
+    .replace(/<\/p>\s*<p>/g, "\n\n");
+
   return {
     title: post.title,
     description: post.excerpt,
@@ -27,8 +32,8 @@ function cmsToPost(post: CmsBlogPost): BlogPost {
     seoTitle: post.seo_title,
     seoDescription: post.seo_description,
     slug: post.slug,
-    content: post.body,
-    readingTime: readingTime(post.body.replace(/<[^>]*>/g, " ")),
+    content,
+    readingTime: readingTime(content.replace(/<[^>]*>/g, " ")),
   };
 }
 
