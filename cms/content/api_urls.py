@@ -11,6 +11,8 @@ urlpatterns = [
     path("facilities/", views.facilities),
     path("nearby-attractions/", views.nearby_attractions),
     path("gallery/", views.gallery),
+    path("gallery-page/", views.gallery_page),
+    path("contact-page/", views.contact_page),
     path("blog/", views.blog_list),
     path("blog/<slug:slug>/", views.blog_detail),
     path("reviews/", views.reviews),

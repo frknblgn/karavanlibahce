@@ -51,6 +51,16 @@ def gallery(request):
     return response({"items": [{"id": item.pk, "title": item.title, "image": image_url(request, item.image), "category": item.category, "alt_text": item.alt_text or item.title, "sort_order": item.sort_order} for item in GalleryImage.objects.filter(is_active=True)]})
 
 
+def gallery_page(request):
+    page = GalleryPage.objects.live().first()
+    return response({"intro_title": page.intro_title, "intro_text": page.intro_text, "cta_title": page.cta_title, "cta_text": page.cta_text, "cta_label": page.cta_label} if page else {})
+
+
+def contact_page(request):
+    page = ContactPage.objects.live().first()
+    return response({"intro_title": page.intro_title, "intro_text": page.intro_text, "reservation_title": page.reservation_title, "reservation_text": page.reservation_text, "faq_title": page.faq_title, "faq_text": page.faq_text} if page else {})
+
+
 def blog_payload(request, post):
     return {"title": post.title, "slug": post.slug, "excerpt": post.excerpt, "cover_image": image_url(request, post.cover_image), "category": post.category, "published_date": post.published_date.isoformat(), "body": post.body, "seo_title": post.seo_title, "seo_description": post.seo_description}
 

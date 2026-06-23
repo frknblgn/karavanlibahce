@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { waLink } from "@/config/site.config";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsContactPage } from "@/lib/cms-api";
 
 export function ContactPageDetails() {
   const { t } = useLanguage();
+  const page = useCmsData<CmsContactPage | null>("/contact-page/", null);
 
   return (
     <section className="section-y">
@@ -16,10 +19,10 @@ export function ContactPageDetails() {
         <Reveal className="rounded-lg border border-line bg-cream p-[clamp(28px,5vw,56px)]">
           <Eyebrow>{t.contactPage.reservationEyebrow}</Eyebrow>
           <h2 className="mt-4 text-[clamp(30px,4vw,48px)]">
-            {t.contactPage.reservationTitle}
+            {page?.reservation_title || t.contactPage.reservationTitle}
           </h2>
           <p className="mt-5 text-[16px] leading-relaxed text-ink-soft">
-            {t.contactPage.reservationText}
+            {page?.reservation_text || t.contactPage.reservationText}
           </p>
           <Button href={waLink()} variant="whatsapp" className="mt-8">
             <WhatsAppIcon />
@@ -29,9 +32,9 @@ export function ContactPageDetails() {
 
         <Reveal className="rounded-lg border border-line bg-beige-deep p-[clamp(28px,5vw,56px)]">
           <Eyebrow>{t.contactPage.faqEyebrow}</Eyebrow>
-          <h2 className="mt-4 text-[clamp(30px,4vw,48px)]">{t.contactPage.faqTitle}</h2>
+          <h2 className="mt-4 text-[clamp(30px,4vw,48px)]">{page?.faq_title || t.contactPage.faqTitle}</h2>
           <p className="mt-5 text-[16px] leading-relaxed text-ink-soft">
-            {t.contactPage.faqText}
+            {page?.faq_text || t.contactPage.faqText}
           </p>
           <Button href="/#faq" variant="outline" className="mt-8">
             {t.contactPage.faqCta}

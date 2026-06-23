@@ -10,7 +10,7 @@ import { waLink } from "@/config/site.config";
 import { gallery as fallbackGallery } from "@/data/gallery";
 import type { GalleryCategory } from "@/types";
 import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsGalleryImage } from "@/lib/cms-api";
+import type { CmsCollection, CmsGalleryImage, CmsGalleryPage } from "@/lib/cms-api";
 import {
   ArrowIcon,
   ExpandIcon,
@@ -22,6 +22,7 @@ import {
 export function Gallery() {
   const { t, locale } = useLanguage();
   const cmsGallery = useCmsData<CmsCollection<CmsGalleryImage>>("/gallery/", { items: [] });
+  const page = useCmsData<CmsGalleryPage | null>("/gallery-page/", null);
   const gallery = cmsGallery.items.length
     ? cmsGallery.items.map((item, index) => ({
         id: String(item.id),
@@ -75,8 +76,8 @@ export function Gallery() {
         <div className="flex flex-wrap items-end justify-between gap-8">
           <SectionHeading
             eyebrow={t.galleryPage.eyebrow}
-            title={t.galleryPage.title}
-            lead={t.galleryPage.lead}
+            title={page?.intro_title || t.galleryPage.title}
+            lead={page?.intro_text || t.galleryPage.lead}
           />
           <Reveal className="flex flex-wrap gap-2">
             {categories.map((key) => (
@@ -134,13 +135,13 @@ export function Gallery() {
             {t.galleryPage.ctaEyebrow}
           </p>
           <h2 className="mx-auto mt-4 max-w-[720px] text-[clamp(32px,5vw,56px)] text-white">
-            {t.galleryPage.ctaTitle}
+            {page?.cta_title || t.galleryPage.ctaTitle}
           </h2>
           <p className="mx-auto mt-4 max-w-[560px] text-[16px] text-white/75">
-            {t.galleryPage.ctaText}
+            {page?.cta_text || t.galleryPage.ctaText}
           </p>
           <Button href={waLink()} variant="whatsapp" className="mt-7">
-            {t.galleryPage.ctaButton}
+            {page?.cta_label || t.galleryPage.ctaButton}
             <ArrowIcon />
           </Button>
         </Reveal>
