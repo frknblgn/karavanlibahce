@@ -34,14 +34,29 @@ export function Hero() {
         style={reduce ? undefined : { y }}
         className="absolute inset-x-0 -inset-y-[8%]"
       >
-        <Photo
-          src={home?.hero_image || siteConfig.hero.image}
-          alt={siteConfig.hero.alt}
-          tone="warm"
-          priority
-          sizes="100vw"
-          className="h-full w-full"
-        />
+        {home?.hero_video && !reduce ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={home.hero_image || siteConfig.hero.image}
+            className="h-full w-full object-cover"
+            aria-hidden="true"
+          >
+            <source src={home.hero_video} type="video/mp4" />
+          </video>
+        ) : (
+          <Photo
+            src={home?.hero_image || siteConfig.hero.image}
+            alt={siteConfig.hero.alt}
+            tone="warm"
+            priority
+            sizes="100vw"
+            className="h-full w-full"
+          />
+        )}
         {/* warm legibility scrim */}
         <div
           className="absolute inset-0 z-[3]"
