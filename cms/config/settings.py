@@ -107,3 +107,18 @@ CORS_ALLOWED_ORIGINS = [
 WAGTAIL_SITE_NAME = "Bursa Karavanlı Bahçe CMS"
 WAGTAILADMIN_BASE_URL = os.getenv("WAGTAILADMIN_BASE_URL", "http://localhost:8000")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Send production request failures to Render's standard logs so deployment
+# issues can be diagnosed without exposing Django's debug page to visitors.
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "loggers": {
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
+}
