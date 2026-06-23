@@ -123,6 +123,45 @@ class SortableActive(models.Model):
 
 
 @register_snippet
+class HomepageSection(SortableActive):
+    key = models.CharField(max_length=40, unique=True, help_text="experience, facilities, nearby, pricing, reviews or faq")
+    eyebrow = models.CharField(max_length=120, blank=True)
+    title = models.CharField(max_length=160, blank=True)
+    lead = models.TextField(blank=True)
+    aside_title = models.CharField(max_length=160, blank=True)
+    aside_text = models.TextField(blank=True)
+    cta_label = models.CharField(max_length=100, blank=True)
+    note = models.TextField(blank=True)
+    panels = [FieldPanel(name) for name in ("key", "eyebrow", "title", "lead", "aside_title", "aside_text", "cta_label", "note", "sort_order", "is_active")]
+
+    def __str__(self):
+        return self.key
+
+
+@register_snippet
+class ExperienceCard(SortableActive):
+    title = models.CharField(max_length=160)
+    description = models.TextField(blank=True)
+    image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
+    alt_text = models.CharField(max_length=255, blank=True)
+    panels = [FieldPanel(name) for name in ("title", "description", "image", "alt_text", "sort_order", "is_active")]
+
+    def __str__(self): return self.title
+
+
+@register_snippet
+class PricingCard(SortableActive):
+    title = models.CharField(max_length=160)
+    subtitle = models.TextField(blank=True)
+    icon_name = models.CharField(max_length=50, blank=True)
+    features = models.JSONField(default=list, blank=True)
+    featured = models.BooleanField(default=False)
+    panels = [FieldPanel(name) for name in ("title", "subtitle", "icon_name", "features", "featured", "sort_order", "is_active")]
+
+    def __str__(self): return self.title
+
+
+@register_snippet
 class Facility(SortableActive):
     title = models.CharField(max_length=160)
     description = models.TextField(blank=True)

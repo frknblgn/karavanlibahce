@@ -5,6 +5,9 @@ from . import views
 urlpatterns = [
     path("site-settings/", views.site_settings),
     path("home/", views.home),
+    path("homepage-sections/", views.homepage_sections),
+    path("experiences/", views.experiences),
+    path("pricing/", views.pricing),
     path("facilities/", views.facilities),
     path("nearby-attractions/", views.nearby_attractions),
     path("gallery/", views.gallery),

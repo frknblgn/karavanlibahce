@@ -1,7 +1,7 @@
 from django.http import Http404, JsonResponse
 from wagtail.models import Site
 
-from .models import BlogPost, ContactSettings, Facility, GalleryImage, HomePage, NearbyAttraction, Review, FAQ, SiteSettings
+from .models import BlogPost, ContactSettings, ExperienceCard, Facility, GalleryImage, HomepageSection, HomePage, NearbyAttraction, PricingCard, Review, FAQ, SiteSettings
 
 
 def image_url(request, image):
@@ -29,6 +29,18 @@ def home(request):
 
 def facilities(request):
     return response({"items": [{"id": item.pk, "title": item.title, "description": item.description, "icon_name": item.icon_name, "image": image_url(request, item.image), "sort_order": item.sort_order} for item in Facility.objects.filter(is_active=True)]})
+
+
+def homepage_sections(request):
+    return response({"items": [{"key": item.key, "eyebrow": item.eyebrow, "title": item.title, "lead": item.lead, "aside_title": item.aside_title, "aside_text": item.aside_text, "cta_label": item.cta_label, "note": item.note} for item in HomepageSection.objects.filter(is_active=True)]})
+
+
+def experiences(request):
+    return response({"items": [{"id": item.pk, "title": item.title, "description": item.description, "image": image_url(request, item.image), "alt_text": item.alt_text or item.title} for item in ExperienceCard.objects.filter(is_active=True)]})
+
+
+def pricing(request):
+    return response({"items": [{"id": item.pk, "title": item.title, "subtitle": item.subtitle, "icon_name": item.icon_name, "features": item.features, "featured": item.featured} for item in PricingCard.objects.filter(is_active=True)]})
 
 
 def nearby_attractions(request):
