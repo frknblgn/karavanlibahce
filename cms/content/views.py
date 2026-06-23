@@ -23,7 +23,8 @@ def home(request):
     page = HomePage.objects.live().first()
     if not page:
         return response({})
-    return response({"hero_title": page.hero_title, "hero_subtitle": page.hero_subtitle, "hero_description": page.hero_description, "hero_image": image_url(request, page.hero_image), "hero_video": page.hero_video, "primary_cta_label": page.primary_cta_label, "primary_cta_url": page.primary_cta_url, "secondary_cta_label": page.secondary_cta_label, "secondary_cta_url": page.secondary_cta_url})
+    hero_video = request.build_absolute_uri(page.hero_video_file.file.url) if page.hero_video_file else page.hero_video
+    return response({"hero_title": page.hero_title, "hero_subtitle": page.hero_subtitle, "hero_description": page.hero_description, "hero_image": image_url(request, page.hero_image), "hero_video": hero_video, "primary_cta_label": page.primary_cta_label, "primary_cta_url": page.primary_cta_url, "secondary_cta_label": page.secondary_cta_label, "secondary_cta_url": page.secondary_cta_url})
 
 
 def facilities(request):

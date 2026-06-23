@@ -57,13 +57,14 @@ class HomePage(Page):
     hero_description = models.TextField(blank=True)
     hero_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     hero_video = models.URLField(blank=True)
+    hero_video_file = models.ForeignKey("wagtaildocs.Document", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     primary_cta_label = models.CharField(max_length=80, blank=True)
     primary_cta_url = models.CharField(max_length=255, blank=True)
     secondary_cta_label = models.CharField(max_length=80, blank=True)
     secondary_cta_url = models.CharField(max_length=255, blank=True)
 
     content_panels = Page.content_panels + [
-        MultiFieldPanel([FieldPanel("hero_title"), FieldPanel("hero_subtitle"), FieldPanel("hero_description"), FieldPanel("hero_image"), FieldPanel("hero_video")], "Hero"),
+        MultiFieldPanel([FieldPanel("hero_title"), FieldPanel("hero_subtitle"), FieldPanel("hero_description"), FieldPanel("hero_image"), FieldPanel("hero_video_file"), FieldPanel("hero_video")], "Hero"),
         MultiFieldPanel([FieldPanel("primary_cta_label"), FieldPanel("primary_cta_url"), FieldPanel("secondary_cta_label"), FieldPanel("secondary_cta_url")], "Calls to action"),
     ]
 
