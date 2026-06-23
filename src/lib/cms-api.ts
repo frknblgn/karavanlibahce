@@ -1,4 +1,8 @@
-const baseUrl = process.env.NEXT_PUBLIC_CMS_API_URL?.replace(/\/$/, "");
+// The public CMS endpoint is a production default. An environment variable can
+// still override it for local or preview deployments.
+const baseUrl = (
+  process.env.NEXT_PUBLIC_CMS_API_URL ?? "https://karavanlibahce-cms.onrender.com/api"
+).replace(/\/$/, "");
 
 export async function getCmsData<T>(path: string): Promise<T | null> {
   if (!baseUrl) return null;
