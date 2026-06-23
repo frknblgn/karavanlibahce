@@ -25,5 +25,7 @@ export interface CmsContact { heading: string; description: string; phone: strin
 export interface CmsGalleryPage { intro_title: string; intro_text: string; cta_title: string; cta_text: string; cta_label: string }
 export interface CmsContactPage { intro_title: string; intro_text: string; reservation_title: string; reservation_text: string; faq_title: string; faq_text: string }
 export interface CmsHomepageSection { key: string; eyebrow: string; title: string; lead: string; aside_title: string; aside_text: string; cta_label: string; note: string }
+export interface CmsExperience { id: number; title: string; description: string; image: string | null; alt_text: string }
+export interface CmsPricing { id: number; title: string; subtitle: string; icon_name: string; features: string[]; featured: boolean }
 export interface CmsBlogPost { title: string; slug: string; excerpt: string; cover_image: string | null; category: string; published_date: string; body: string; seo_title: string; seo_description: string }
 export interface CmsSiteSettings { site_name: string; logo: string | null; phone: string; whatsapp_number: string; whatsapp_message: string; instagram_url: string; instagram_handle: string; navigation: Record<string, string>; footer: { tagline: string; rights: string } }

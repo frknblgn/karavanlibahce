@@ -10,6 +10,9 @@ import { pricing } from "@/data/pricing";
 import { waLink } from "@/config/site.config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsCollection, CmsPricing } from "@/lib/cms-api";
+import type { IconName } from "@/types";
 
 const Check = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-[18px] w-[18px]">
@@ -20,6 +23,8 @@ const Check = () => (
 export function Pricing() {
   const { t, locale } = useLanguage();
   const reduce = useReducedMotion();
+  const cms = useCmsData<CmsCollection<CmsPricing>>("/pricing/", { items: [] });
+  const items = cms.items.length ? cms.items.map((item) => ({ id: String(item.id), icon: (item.icon_name || "caravan") as IconName, featured: item.featured, tr: { title: item.title, subtitle: item.subtitle, features: item.features }, en: { title: item.title, subtitle: item.subtitle, features: item.features } })) : pricing;
 
   return (
     <section id="pricing" data-screen-label="Pricing" className="section-y bg-beige">
@@ -38,7 +43,7 @@ export function Pricing() {
           viewport={viewportOnce}
           className="mt-[clamp(44px,5vw,64px)] grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3"
         >
-          {pricing.map((p) => {
+          {items.map((p) => {
             const featured = p.featured;
             return (
               <motion.article

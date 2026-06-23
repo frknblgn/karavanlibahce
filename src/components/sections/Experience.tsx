@@ -6,10 +6,14 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Photo } from "@/components/ui/Photo";
 import { experiences } from "@/data/experiences";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsCollection, CmsExperience } from "@/lib/cms-api";
 
 export function Experience() {
   const { t, locale } = useLanguage();
   const reduce = useReducedMotion();
+  const cms = useCmsData<CmsCollection<CmsExperience>>("/experiences/", { items: [] });
+  const items = cms.items.length ? cms.items.map((item, index) => ({ id: String(item.id), image: item.image || experiences[index]?.image || "/images/experience/caravan-stays.jpg", tone: "forest" as const, tr: { title: item.title, description: item.description }, en: { title: item.title, description: item.description } })) : experiences;
 
   return (
     <section id="experience" data-screen-label="Experience" className="section-y">
@@ -28,7 +32,7 @@ export function Experience() {
           viewport={viewportOnce}
           className="mt-[clamp(40px,5vw,64px)] grid grid-cols-1 gap-[22px] sm:grid-cols-2 lg:grid-cols-4"
         >
-          {experiences.map((e, i) => (
+          {items.map((e, i) => (
             <motion.article
               key={e.id}
               variants={reduce ? undefined : fadeUp}
