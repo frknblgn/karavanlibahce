@@ -7,12 +7,15 @@ import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 import { Logo } from "@/components/layout/Logo";
 import { cn } from "@/lib/utils";
+import { useCmsData } from "@/hooks/useCmsData";
+import type { CmsSiteSettings } from "@/lib/cms-api";
 
 export function Navbar() {
   const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
+  const settings = useCmsData<CmsSiteSettings | null>("/site-settings/", null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -43,7 +46,7 @@ export function Navbar() {
               scrolled ? "text-ink-soft" : "text-white",
             )}
           >
-            {t.nav[l.key as keyof typeof t.nav]}
+            {settings?.navigation[l.key] || t.nav[l.key as keyof typeof t.nav]}
             <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-orange transition-all duration-300 ease-brand group-hover:w-full" />
           </a>
         ))}
@@ -60,7 +63,7 @@ export function Navbar() {
               : "border-white/55 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20",
           )}
         >
-          {t.nav.cta}
+          {settings?.navigation.cta || t.nav.cta}
         </a>
 
         {/* Mobile burger */}
@@ -95,7 +98,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="font-serif text-2xl text-white"
               >
-                {t.nav[l.key as keyof typeof t.nav]}
+              {settings?.navigation[l.key] || t.nav[l.key as keyof typeof t.nav]}
               </a>
             ))}
           </motion.div>

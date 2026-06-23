@@ -50,7 +50,7 @@ export function Hero() {
         ) : (
           <Photo
             src={home?.hero_image || siteConfig.hero.image}
-            alt={siteConfig.hero.alt}
+            alt={home?.hero_image_alt || siteConfig.hero.alt}
             tone="warm"
             priority
             sizes="100vw"
@@ -78,7 +78,7 @@ export function Hero() {
       >
         <div className="grid max-w-[760px] -translate-y-[4%] justify-items-center">
           <Eyebrow center light>
-            {t.hero.eyebrow}
+            {home?.hero_eyebrow || t.hero.eyebrow}
           </Eyebrow>
           <h1 className="mt-5 text-[clamp(36px,5.4vw,74px)] font-medium leading-[1.04] text-white">
             {home?.hero_title || t.hero.title}
@@ -96,7 +96,7 @@ export function Hero() {
           </div>
 
           <div className="mt-[30px] flex flex-wrap justify-center gap-x-[clamp(20px,4vw,56px)] gap-y-5">
-            {t.hero.stats.map((s) => (
+            {(home?.stats?.length ? home.stats : t.hero.stats).map((s) => (
               <div key={s.label} className="leading-tight">
                 <b className="block font-serif text-[clamp(26px,3vw,38px)] font-medium">
                   {s.value}

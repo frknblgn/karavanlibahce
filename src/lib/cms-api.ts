@@ -20,6 +20,7 @@ export interface CmsNearbyAttraction { id: number; title: string; description: s
 export interface CmsGalleryImage { id: number; title: string; image: string; category: string; alt_text: string }
 export interface CmsReview { id: number; name: string; comment: string; rating: number; source: string }
 export interface CmsFaq { id: number; question: string; answer: string }
-export interface CmsHome { hero_title: string; hero_subtitle: string; hero_description: string; hero_image: string | null; hero_video: string; primary_cta_label: string; primary_cta_url: string; secondary_cta_label: string; secondary_cta_url: string }
+export interface CmsHome { hero_eyebrow: string; hero_title: string; hero_subtitle: string; hero_description: string; hero_image: string | null; hero_image_alt: string; hero_video: string; primary_cta_label: string; primary_cta_url: string; secondary_cta_label: string; secondary_cta_url: string; stats: Array<{ value: string; label: string }> }
 export interface CmsContact { heading: string; description: string; phone: string; whatsapp_number: string; email: string; address: string; google_maps_embed_url: string }
 export interface CmsBlogPost { title: string; slug: string; excerpt: string; cover_image: string | null; category: string; published_date: string; body: string; seo_title: string; seo_description: string }
+export interface CmsSiteSettings { site_name: string; logo: string | null; phone: string; whatsapp_number: string; whatsapp_message: string; instagram_url: string; instagram_handle: string; navigation: Record<string, string>; footer: { tagline: string; rights: string } }

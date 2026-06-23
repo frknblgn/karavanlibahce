@@ -16,7 +16,7 @@ def site_settings(request):
     settings = SiteSettings.objects.first()
     if not settings:
         return response({})
-    return response({"site_name": settings.site_name, "logo": image_url(request, settings.logo), "phone": settings.phone, "whatsapp_number": settings.whatsapp_number, "email": settings.email, "instagram_url": settings.instagram_url, "address": settings.address, "google_maps_url": settings.google_maps_url, "seo_title": settings.seo_title, "seo_description": settings.seo_description, "navigation": {"experience": settings.nav_experience, "facilities": settings.nav_facilities, "nearby": settings.nav_nearby, "blog": settings.nav_blog, "gallery": settings.nav_gallery, "contact": settings.nav_contact, "cta": settings.reservation_cta_label}, "footer": {"tagline": settings.footer_tagline, "rights": settings.footer_rights}})
+    return response({"site_name": settings.site_name, "logo": image_url(request, settings.logo), "phone": settings.phone, "whatsapp_number": settings.whatsapp_number, "whatsapp_message": settings.whatsapp_message, "email": settings.email, "instagram_url": settings.instagram_url, "instagram_handle": settings.instagram_handle, "address": settings.address, "google_maps_url": settings.google_maps_url, "seo_title": settings.seo_title, "seo_description": settings.seo_description, "navigation": {"experience": settings.nav_experience, "facilities": settings.nav_facilities, "nearby": settings.nav_nearby, "pricing": settings.nav_pricing, "blog": settings.nav_blog, "gallery": settings.nav_gallery, "contact": settings.nav_contact, "cta": settings.reservation_cta_label}, "footer": {"tagline": settings.footer_tagline, "rights": settings.footer_rights}})
 
 
 def home(request):
@@ -24,7 +24,7 @@ def home(request):
     if not page:
         return response({})
     hero_video = request.build_absolute_uri(page.hero_video_file.file.url) if page.hero_video_file else page.hero_video
-    return response({"hero_title": page.hero_title, "hero_subtitle": page.hero_subtitle, "hero_description": page.hero_description, "hero_image": image_url(request, page.hero_image), "hero_video": hero_video, "primary_cta_label": page.primary_cta_label, "primary_cta_url": page.primary_cta_url, "secondary_cta_label": page.secondary_cta_label, "secondary_cta_url": page.secondary_cta_url})
+    return response({"hero_eyebrow": page.hero_eyebrow, "hero_title": page.hero_title, "hero_subtitle": page.hero_subtitle, "hero_description": page.hero_description, "hero_image": image_url(request, page.hero_image), "hero_image_alt": page.hero_image_alt, "hero_video": hero_video, "primary_cta_label": page.primary_cta_label, "primary_cta_url": page.primary_cta_url, "secondary_cta_label": page.secondary_cta_label, "secondary_cta_url": page.secondary_cta_url, "stats": [{"value": item.value, "label": item.label} for item in page.hero_stats.all()]})
 
 
 def facilities(request):

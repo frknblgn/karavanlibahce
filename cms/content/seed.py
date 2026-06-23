@@ -9,7 +9,7 @@ from django.core.files import File
 from wagtail.images import get_image_model
 from wagtail.models import Page, Site
 
-from .models import BlogPost, ContactPage, ContactSettings, Facility, FAQ, GalleryImage, GalleryPage, HomePage, NearbyAttraction, Review, SiteSettings
+from .models import BlogPost, ContactPage, ContactSettings, Facility, FAQ, GalleryImage, GalleryPage, HeroStat, HomePage, NearbyAttraction, Review, SiteSettings
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -77,14 +77,19 @@ def seed():
         site.root_page = home
         site.save()
     home.hero_title = dictionary["hero"]["title"]
+    home.hero_eyebrow = dictionary["hero"]["eyebrow"]
     home.hero_subtitle = dictionary["hero"]["eyebrow"]
     home.hero_description = dictionary["hero"]["subtitle"]
     home.hero_image = get_image(site_data["hero"]["image"])
+    home.hero_image_alt = site_data["hero"]["alt"]
     home.primary_cta_label = dictionary["hero"]["primaryCta"]
     home.primary_cta_url = "/contact"
     home.secondary_cta_label = dictionary["hero"]["secondaryCta"]
     home.secondary_cta_url = "/gallery"
     home.save_revision().publish()
+    home.hero_stats.all().delete()
+    for index, stat in enumerate(dictionary["hero"]["stats"]):
+        HeroStat.objects.create(page=home, value=stat["value"], label=stat["label"], sort_order=index)
 
     gallery_page = GalleryPage.objects.first()
     if not gallery_page:
