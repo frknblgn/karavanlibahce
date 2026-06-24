@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 
 from content.models import HomePage
-from content.seed import seed
+from content.seed import seed, seed_missing_collections
 
 
 class Command(BaseCommand):
@@ -9,7 +9,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if HomePage.objects.exists():
-            self.stdout.write("CMS content already exists; skipping seed.")
+            result = seed_missing_collections()
+            self.stdout.write(self.style.SUCCESS(f"CMS missing collections seeded: {result}"))
             return
 
         result = seed()

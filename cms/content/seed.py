@@ -9,7 +9,7 @@ from django.core.files import File
 from wagtail.images import get_image_model
 from wagtail.models import Page, Site
 
-from .models import BlogPost, ContactPage, ContactSettings, Facility, FAQ, GalleryImage, GalleryPage, HeroStat, HomePage, NearbyAttraction, Review, SiteSettings
+from .models import BlogPost, ContactPage, ContactSettings, ExperienceCard, Facility, FAQ, GalleryImage, GalleryPage, HeroStat, HomepageSection, HomePage, NearbyAttraction, PricingCard, Review, SiteSettings
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
@@ -30,6 +30,34 @@ def get_image(relative_url):
         return existing
     with source.open("rb") as image_file:
         return Image.objects.create(title=source.name, file=File(image_file, name=source.name))
+
+
+def seed_missing_collections():
+    """Add later-introduced CMS collections without overwriting editor changes."""
+    dictionary = load_json("src/content/cms/dictionaries/tr.json")
+    section_defaults = {
+        "experience": dictionary["experience"],
+        "facilities": dictionary["facilities"],
+        "nearby": dictionary["nearby"],
+        "pricing": dictionary["pricing"],
+        "reviews": dictionary["reviews"],
+        "faq": dictionary["faq"],
+    }
+    for key, values in section_defaults.items():
+        HomepageSection.objects.get_or_create(
+            key=key,
+            defaults={"eyebrow": values.get("eyebrow", ""), "title": values.get("title", ""), "lead": values.get("lead", ""), "aside_title": values.get("asideTitle", ""), "aside_text": values.get("asideText", ""), "cta_label": values.get("asideCta", values.get("cta", "")), "note": values.get("note", "")},
+        )
+
+    if not ExperienceCard.objects.exists():
+        for index, item in enumerate(load_json("src/content/cms/data/experiences.json")["items"]):
+            ExperienceCard.objects.create(title=item["tr"]["title"], description=item["tr"]["description"], image=get_image(item["image"]), alt_text=item["tr"]["title"], sort_order=index)
+
+    if not PricingCard.objects.exists():
+        for index, item in enumerate(load_json("src/content/cms/data/pricing.json")["items"]):
+            PricingCard.objects.create(title=item["tr"]["title"], subtitle=item["tr"]["subtitle"], icon_name=item["icon"], features=item["tr"]["features"], featured=item.get("featured", False), sort_order=index)
+
+    return {"sections": HomepageSection.objects.count(), "experiences": ExperienceCard.objects.count(), "pricing": PricingCard.objects.count()}
 
 
 def seed():
@@ -137,4 +165,6 @@ def seed():
             home.add_child(instance=post)
             post.save_revision().publish()
 
-    return {"home": HomePage.objects.count(), "gallery_pages": GalleryPage.objects.count(), "contact_pages": ContactPage.objects.count(), "facilities": Facility.objects.count(), "nearby": NearbyAttraction.objects.count(), "gallery": GalleryImage.objects.count(), "reviews": Review.objects.count(), "faqs": FAQ.objects.count(), "blogs": BlogPost.objects.count()}
+    result = {"home": HomePage.objects.count(), "gallery_pages": GalleryPage.objects.count(), "contact_pages": ContactPage.objects.count(), "facilities": Facility.objects.count(), "nearby": NearbyAttraction.objects.count(), "gallery": GalleryImage.objects.count(), "reviews": Review.objects.count(), "faqs": FAQ.objects.count(), "blogs": BlogPost.objects.count()}
+    result.update(seed_missing_collections())
+    return result
