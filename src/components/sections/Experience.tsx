@@ -13,6 +13,7 @@ export function Experience() {
   const { t, locale } = useLanguage();
   const reduce = useReducedMotion();
   const cms = useCmsData<CmsCollection<CmsExperience>>("/experiences/", { items: [] });
+  const usesCms = cms.items.length > 0;
   const items = cms.items.length ? cms.items.map((item, index) => ({ id: String(item.id), image: item.image || experiences[index]?.image || "/images/experience/caravan-stays.jpg", tone: "forest" as const, tr: { title: item.title, description: item.description }, en: { title: item.title, description: item.description } })) : experiences;
 
   return (
@@ -39,14 +40,22 @@ export function Experience() {
               tabIndex={0}
               className="group relative flex min-h-[420px] items-end overflow-hidden rounded-lg text-white shadow-sm"
             >
-              <Photo
-                src={e.image}
-                alt={e[locale].title}
-                tone={e.tone}
-                sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
-                className="absolute inset-0"
-                imgClassName="transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
-              />
+              {usesCms ? (
+                <img
+                  src={e.image}
+                  alt={e[locale].title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
+                />
+              ) : (
+                <Photo
+                  src={e.image}
+                  alt={e[locale].title}
+                  tone={e.tone}
+                  sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 25vw"
+                  className="absolute inset-0"
+                  imgClassName="transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
+                />
+              )}
               <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/5 via-transparent to-black/80" />
               <div className="absolute inset-x-0 bottom-0 z-[3] h-0.5 origin-left scale-x-0 bg-orange transition-transform duration-500 ease-brand group-hover:scale-x-100" />
               <div className="relative z-[3] p-6">
