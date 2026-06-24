@@ -10,6 +10,7 @@ import type { CmsCollection, CmsNearbyAttraction } from "@/lib/cms-api";
 export function Nearby() {
   const { t, locale } = useLanguage();
   const cmsNearby = useCmsData<CmsCollection<CmsNearbyAttraction>>("/nearby-attractions/", { items: [] });
+  const usesCms = cmsNearby.items.length > 0;
   const items = cmsNearby.items.length
     ? cmsNearby.items.map((item, index) => ({
         id: String(item.id),
@@ -37,14 +38,22 @@ export function Nearby() {
               key={n.id}
               className="group relative flex min-h-[440px] snap-start items-end overflow-hidden rounded-lg text-white"
             >
-              <Photo
-                src={n.image}
-                alt={n[locale].title}
-                tone={n.tone}
-                sizes="340px"
-                className="absolute inset-0"
-                imgClassName="transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
-              />
+              {usesCms ? (
+                <img
+                  src={n.image}
+                  alt={n[locale].title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
+                />
+              ) : (
+                <Photo
+                  src={n.image}
+                  alt={n[locale].title}
+                  tone={n.tone}
+                  sizes="340px"
+                  className="absolute inset-0"
+                  imgClassName="transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
+                />
+              )}
               <div className="absolute inset-0 z-[2] bg-gradient-to-b from-black/10 via-transparent to-black/85" />
               <div className="relative z-[3] p-6">
                 <div className="text-xs font-semibold uppercase tracking-[0.12em] text-orange-soft">
