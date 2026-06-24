@@ -24,7 +24,7 @@ def home(request):
     if not page:
         return response({})
     hero_video = request.build_absolute_uri(page.hero_video_file.file.url) if page.hero_video_file else page.hero_video
-    return response({"hero_eyebrow": page.hero_eyebrow, "hero_title": page.hero_title, "hero_subtitle": page.hero_subtitle, "hero_description": page.hero_description, "hero_image": image_url(request, page.hero_image), "hero_image_alt": page.hero_image_alt, "hero_video": hero_video, "primary_cta_label": page.primary_cta_label, "primary_cta_url": page.primary_cta_url, "secondary_cta_label": page.secondary_cta_label, "secondary_cta_url": page.secondary_cta_url, "stats": [{"value": item.value, "label": item.label} for item in page.hero_stats.all()]})
+    return response({"hero_eyebrow": page.hero_eyebrow, "hero_title": page.hero_title, "hero_subtitle": page.hero_subtitle, "hero_description": page.hero_description, "hero_image": image_url(request, page.hero_image), "hero_image_alt": page.hero_image_alt, "hero_video": hero_video, "primary_cta_label": page.primary_cta_label, "primary_cta_url": page.primary_cta_url, "secondary_cta_label": page.secondary_cta_label, "secondary_cta_url": page.secondary_cta_url, "facilities_image": image_url(request, page.facilities_image), "facilities_image_alt": page.facilities_image_alt, "facilities_badge_title": page.facilities_badge_title, "facilities_badge_subtitle": page.facilities_badge_subtitle, "stats": [{"value": item.value, "label": item.label} for item in page.hero_stats.all()]})
 
 
 def facilities(request):

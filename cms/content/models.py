@@ -67,11 +67,16 @@ class HomePage(Page):
     primary_cta_url = models.CharField(max_length=255, blank=True)
     secondary_cta_label = models.CharField(max_length=80, blank=True)
     secondary_cta_url = models.CharField(max_length=255, blank=True)
+    facilities_image = models.ForeignKey("wagtailimages.Image", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
+    facilities_image_alt = models.CharField(max_length=255, blank=True)
+    facilities_badge_title = models.CharField(max_length=120, blank=True)
+    facilities_badge_subtitle = models.CharField(max_length=160, blank=True)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel([FieldPanel("hero_eyebrow"), FieldPanel("hero_title"), FieldPanel("hero_subtitle"), FieldPanel("hero_description"), FieldPanel("hero_image"), FieldPanel("hero_image_alt"), FieldPanel("hero_video_file"), FieldPanel("hero_video")], "Hero"),
         MultiFieldPanel([FieldPanel("primary_cta_label"), FieldPanel("primary_cta_url"), FieldPanel("secondary_cta_label"), FieldPanel("secondary_cta_url")], "Calls to action"),
         InlinePanel("hero_stats", label="Hero statistics"),
+        MultiFieldPanel([FieldPanel("facilities_image"), FieldPanel("facilities_image_alt"), FieldPanel("facilities_badge_title"), FieldPanel("facilities_badge_subtitle")], "Facilities image and badge"),
     ]
 
 

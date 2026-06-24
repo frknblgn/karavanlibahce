@@ -20,7 +20,7 @@ export interface CmsNearbyAttraction { id: number; title: string; description: s
 export interface CmsGalleryImage { id: number; title: string; image: string; category: string; alt_text: string }
 export interface CmsReview { id: number; name: string; comment: string; rating: number; source: string }
 export interface CmsFaq { id: number; question: string; answer: string }
-export interface CmsHome { hero_eyebrow: string; hero_title: string; hero_subtitle: string; hero_description: string; hero_image: string | null; hero_image_alt: string; hero_video: string; primary_cta_label: string; primary_cta_url: string; secondary_cta_label: string; secondary_cta_url: string; stats: Array<{ value: string; label: string }> }
+export interface CmsHome { hero_eyebrow: string; hero_title: string; hero_subtitle: string; hero_description: string; hero_image: string | null; hero_image_alt: string; hero_video: string; primary_cta_label: string; primary_cta_url: string; secondary_cta_label: string; secondary_cta_url: string; facilities_image: string | null; facilities_image_alt: string; facilities_badge_title: string; facilities_badge_subtitle: string; stats: Array<{ value: string; label: string }> }
 export interface CmsContact { heading: string; description: string; phone: string; whatsapp_number: string; email: string; address: string; google_maps_embed_url: string }
 export interface CmsGalleryPage { intro_title: string; intro_text: string; cta_title: string; cta_text: string; cta_label: string }
 export interface CmsContactPage { intro_title: string; intro_text: string; reservation_title: string; reservation_text: string; faq_title: string; faq_text: string }

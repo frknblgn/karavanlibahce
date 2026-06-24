@@ -8,12 +8,13 @@ import { Icon } from "@/components/icons";
 import { facilities } from "@/data/facilities";
 import { siteConfig } from "@/config/site.config";
 import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsFacility } from "@/lib/cms-api";
+import type { CmsCollection, CmsFacility, CmsHome } from "@/lib/cms-api";
 import type { IconName } from "@/types";
 
 export function Facilities() {
   const { t, locale } = useLanguage();
   const cmsFacilities = useCmsData<CmsCollection<CmsFacility>>("/facilities/", { items: [] });
+  const home = useCmsData<CmsHome | null>("/home/", null);
   const items = cmsFacilities.items.length
     ? cmsFacilities.items.map((item, index) => ({
         id: String(item.id),
@@ -27,19 +28,13 @@ export function Facilities() {
     <section id="facilities" data-screen-label="Facilities" className="section-y bg-cream">
       <div className="wrap grid items-center gap-[clamp(40px,6vw,90px)] lg:grid-cols-[1fr_1.1fr]">
         <Reveal className="relative h-[min(72vh,600px)] overflow-hidden rounded-lg shadow-md">
-          <Photo
-            src={siteConfig.facilitiesImage.image}
-            alt={siteConfig.facilitiesImage.alt[locale]}
-            tone="warm"
-            sizes="(max-width:1024px) 100vw, 45vw"
-            className="absolute inset-0"
-          />
+          {home?.facilities_image ? <img src={home.facilities_image} alt={home.facilities_image_alt || siteConfig.facilitiesImage.alt[locale]} className="absolute inset-0 h-full w-full object-cover" /> : <Photo src={siteConfig.facilitiesImage.image} alt={siteConfig.facilitiesImage.alt[locale]} tone="warm" sizes="(max-width:1024px) 100vw, 45vw" className="absolute inset-0" />}
           <div className="absolute bottom-[22px] left-[22px] z-[4] flex flex-col gap-0.5 rounded bg-cream/95 px-[18px] py-3.5 shadow-sm backdrop-blur-sm">
             <b className="whitespace-nowrap font-serif text-[17px] leading-tight">
-              {t.facilities.badgeTitle}
+              {home?.facilities_badge_title || t.facilities.badgeTitle}
             </b>
             <span className="whitespace-nowrap text-xs tracking-[0.04em] text-muted">
-              {t.facilities.badgeSub}
+              {home?.facilities_badge_subtitle || t.facilities.badgeSub}
             </span>
           </div>
         </Reveal>
