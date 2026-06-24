@@ -7,6 +7,8 @@ import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { BlogIndex } from "./BlogIndex";
 import { siteConfig } from "@/config/site.config";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = buildMetadata({
   title: siteConfig.seo.blogTitle,
   description: siteConfig.seo.blogDescription,

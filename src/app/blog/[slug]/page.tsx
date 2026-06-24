@@ -13,6 +13,8 @@ import { Photo } from "@/components/ui/Photo";
 import { BlogPostingJsonLd } from "@/components/seo/JsonLd";
 import { mdxComponents } from "./mdx-components";
 
+export const dynamic = "force-dynamic";
+
 interface Params {
   params: { slug: string };
 }
