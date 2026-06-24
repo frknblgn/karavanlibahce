@@ -235,7 +235,7 @@ class BlogPost(Page):
     is_published = models.BooleanField(default=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel("excerpt"), FieldPanel("cover_image"), FieldPanel("category"), FieldPanel("published_date"), FieldPanel("body"),
+        FieldPanel("slug"), FieldPanel("excerpt"), FieldPanel("cover_image"), FieldPanel("category"), FieldPanel("published_date"), FieldPanel("body"),
         MultiFieldPanel([FieldPanel("seo_title"), FieldPanel("seo_description"), FieldPanel("is_published")], "SEO and publication"),
     ]
     parent_page_types = ["content.HomePage"]
