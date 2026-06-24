@@ -49,6 +49,11 @@ def seed_missing_collections():
             defaults={"eyebrow": values.get("eyebrow", ""), "title": values.get("title", ""), "lead": values.get("lead", ""), "aside_title": values.get("asideTitle", ""), "aside_text": values.get("asideText", ""), "cta_label": values.get("asideCta", values.get("cta", "")), "note": values.get("note", "")},
         )
 
+    home = HomePage.objects.first()
+    if home and not home.hero_stats.exists():
+        for index, stat in enumerate(dictionary["hero"]["stats"]):
+            HeroStat.objects.create(page=home, value=stat["value"], label=stat["label"], sort_order=index)
+
     if not ExperienceCard.objects.exists():
         for index, item in enumerate(load_json("src/content/cms/data/experiences.json")["items"]):
             ExperienceCard.objects.create(title=item["tr"]["title"], description=item["tr"]["description"], image=get_image(item["image"]), alt_text=item["tr"]["title"], sort_order=index)
