@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllSlugs, getPostBySlug } from "@/lib/blog";
+import { getPostBySlug } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
 import { formatDate } from "@/lib/utils";
 import { siteConfig } from "@/config/site.config";
@@ -17,10 +17,6 @@ export const dynamic = "force-dynamic";
 
 interface Params {
   params: { slug: string };
-}
-
-export async function generateStaticParams() {
-  return (await getAllSlugs()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
