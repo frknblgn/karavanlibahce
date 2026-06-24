@@ -116,4 +116,5 @@ export interface BlogPost extends BlogFrontmatter {
   slug: string;
   readingTime: number; // minutes
   content: string; // raw MDX body
+  contentFormat?: "html" | "mdx";
 }

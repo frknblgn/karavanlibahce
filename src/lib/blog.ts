@@ -16,10 +16,7 @@ function readSlugs(): string[] {
 }
 
 function cmsToPost(post: CmsBlogPost): BlogPost {
-  const content = post.body
-    .replace(/^<p>/, "")
-    .replace(/<\/p>$/, "")
-    .replace(/<\/p>\s*<p>/g, "\n\n");
+  const content = post.body;
 
   return {
     title: post.title,
@@ -33,6 +30,7 @@ function cmsToPost(post: CmsBlogPost): BlogPost {
     seoDescription: post.seo_description,
     slug: post.slug,
     content,
+    contentFormat: "html",
     readingTime: readingTime(content.replace(/<[^>]*>/g, " ")),
   };
 }
@@ -49,6 +47,7 @@ function getLocalPostBySlug(slug: string): BlogPost | null {
     ...fm,
     slug,
     content,
+    contentFormat: "mdx",
     readingTime: readingTime(content),
   };
 }

@@ -74,7 +74,11 @@ export default async function BlogPostPage({ params }: Params) {
           </div>
 
           <div className="prose-bkb mt-10">
-            <MDXRemote source={post.content} components={mdxComponents} />
+            {post.contentFormat === "html" ? (
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            ) : (
+              <MDXRemote source={post.content} components={mdxComponents} />
+            )}
           </div>
         </div>
       </article>
