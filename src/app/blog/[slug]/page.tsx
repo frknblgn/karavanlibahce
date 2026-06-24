@@ -9,7 +9,6 @@ import { siteConfig } from "@/config/site.config";
 import { BlogHeader } from "@/components/layout/BlogHeader";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
-import { Photo } from "@/components/ui/Photo";
 import { BlogPostingJsonLd } from "@/components/seo/JsonLd";
 import { mdxComponents } from "./mdx-components";
 
@@ -71,14 +70,7 @@ export default async function BlogPostPage({ params }: Params) {
           </div>
 
           <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-lg shadow-md">
-            <Photo
-              src={post.cover}
-              alt={post.title}
-              tone="forest"
-              priority
-              sizes="(max-width:768px) 100vw, 760px"
-              className="absolute inset-0"
-            />
+            <img src={post.cover} alt={post.title} className="absolute inset-0 h-full w-full object-cover" />
           </div>
 
           <div className="prose-bkb mt-10">

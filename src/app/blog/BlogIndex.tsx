@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { Photo } from "@/components/ui/Photo";
 import { formatDate } from "@/lib/utils";
 import type { BlogPost } from "@/types";
 
@@ -26,13 +25,10 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
             <Reveal key={post.slug} delay={i * 0.06}>
               <Link href={`/blog/${post.slug}`} className="group block">
                 <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-sm">
-                  <Photo
+                  <img
                     src={post.cover}
                     alt={post.title}
-                    tone="forest"
-                    sizes="(max-width:768px) 100vw, 33vw"
-                    className="absolute inset-0"
-                    imgClassName="transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
                   />
                 </div>
                 <div className="mt-4 flex items-center gap-2 text-xs uppercase tracking-[0.1em] text-muted">
