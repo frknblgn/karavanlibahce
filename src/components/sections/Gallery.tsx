@@ -37,17 +37,8 @@ export function Gallery({ cmsItems = [], page = null }: GalleryProps) {
         tall: index % 4 === 0,
       }))
     : fallbackGallery;
-  const [category, setCategory] = useState<GalleryCategory | "all">("all");
   const [index, setIndex] = useState<number | null>(null);
-  const filtered =
-    category === "all" ? gallery : gallery.filter((item) => item.category === category);
-  const categories: Array<GalleryCategory | "all"> = [
-    "all",
-    "caravan",
-    "nature",
-    "fire",
-    "nearby",
-  ];
+  const filtered = gallery;
 
   const close = useCallback(() => setIndex(null), []);
   const go = useCallback(
@@ -82,25 +73,6 @@ export function Gallery({ cmsItems = [], page = null }: GalleryProps) {
             title={page?.intro_title || t.galleryPage.title}
             lead={page?.intro_text || t.galleryPage.lead}
           />
-          <Reveal className="flex flex-wrap gap-2">
-            {categories.map((key) => (
-              <button
-                key={key}
-                type="button"
-                onClick={() => {
-                  setCategory(key);
-                  setIndex(null);
-                }}
-                className={`rounded-full border px-4 py-2 text-[13px] font-semibold transition-colors ${
-                  category === key
-                    ? "border-green bg-green text-white"
-                    : "border-line bg-cream text-ink-soft hover:border-green hover:text-green"
-                }`}
-              >
-                {t.galleryPage[key]}
-              </button>
-            ))}
-          </Reveal>
         </div>
 
         {/* Masonry via CSS columns */}
@@ -168,7 +140,7 @@ export function Gallery({ cmsItems = [], page = null }: GalleryProps) {
           aria-label={active[locale]}
         >
           <figure
-            className="relative w-full max-w-[min(1100px,92vw)]"
+            className="relative flex w-full max-w-[min(960px,92vw)] flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -199,7 +171,7 @@ export function Gallery({ cmsItems = [], page = null }: GalleryProps) {
               <img
                 src={active.image}
                 alt={active[locale]}
-                className="max-h-[78vh] w-full rounded-lg object-contain shadow-lg"
+                className="max-h-[78vh] w-auto max-w-full rounded-lg object-contain shadow-lg"
               />
             ) : (
               <Photo
@@ -210,7 +182,7 @@ export function Gallery({ cmsItems = [], page = null }: GalleryProps) {
                 width={1500}
                 height={1000}
                 sizes="92vw"
-                className="aspect-[3/2] w-full rounded-lg shadow-lg"
+                className="max-h-[78vh] w-full rounded-lg shadow-lg"
               />
             )}
             <figcaption className="mt-4 text-center text-[14px] tracking-[0.04em] text-white/85">

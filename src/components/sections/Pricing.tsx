@@ -44,7 +44,7 @@ export function Pricing({ cmsItems = [], section = null }: PricingProps) {
           initial={reduce ? undefined : "hidden"}
           whileInView={reduce ? undefined : "show"}
           viewport={viewportOnce}
-          className="mt-[clamp(44px,5vw,64px)] grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3"
+          className="mt-[clamp(44px,5vw,64px)] grid grid-cols-1 items-stretch justify-center gap-6 md:grid-cols-[repeat(auto-fit,minmax(280px,360px))]"
         >
           {items.map((p) => {
             const featured = p.featured;
@@ -53,7 +53,7 @@ export function Pricing({ cmsItems = [], section = null }: PricingProps) {
                 key={p.id}
                 variants={reduce ? undefined : fadeUp}
                 className={cn(
-                  "flex flex-col rounded-lg border p-8 transition-[transform,box-shadow] duration-500 ease-brand hover:-translate-y-1.5 hover:shadow-md",
+                  "flex w-full flex-col rounded-lg border p-8 transition-[transform,box-shadow] duration-500 ease-brand hover:-translate-y-1.5 hover:shadow-md",
                   featured
                     ? "border-green bg-green text-white"
                     : "border-line bg-cream",

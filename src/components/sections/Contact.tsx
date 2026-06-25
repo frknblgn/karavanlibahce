@@ -21,6 +21,10 @@ export function Contact({ cmsContact = null, settings = null }: ContactProps) {
   const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
   const address = cmsContact?.address || siteConfig.address.full;
   const mapsUrl = cmsContact?.google_maps_embed_url || siteConfig.mapsUrl;
+  const mapEmbedUrl =
+    mapsUrl.includes("/maps/embed") || mapsUrl.includes("output=embed")
+      ? mapsUrl
+      : `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   const instagramUrl = settings?.instagram_url || siteConfig.social.instagram;
   const instagramHandle = settings?.instagram_handle || siteConfig.social.instagramHandle;
 
@@ -69,42 +73,32 @@ export function Contact({ cmsContact = null, settings = null }: ContactProps) {
           </div>
         </Reveal>
 
-        {/* Map — textured placeholder linking to Google Maps.
-            Swap for an <iframe> embed or a Map component when ready. */}
         <Reveal>
-          <a
-            href={mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t.contact.mapSub}
-            className="relative block h-full min-h-[440px] overflow-hidden rounded-lg shadow-lg"
-          >
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(160deg,#dfe4d6,#c7d2bd 55%,#aebfa3)",
-              }}
+          <div className="relative h-full min-h-[440px] overflow-hidden rounded-lg shadow-lg">
+            <iframe
+              src={mapEmbedUrl}
+              title={t.contact.mapTitle}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full border-0"
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(62,95,68,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(62,95,68,.10) 1px, transparent 1px), linear-gradient(115deg, transparent 47%, rgba(162,123,92,.35) 47%, rgba(162,123,92,.35) 49%, transparent 49%)",
-                backgroundSize: "46px 46px, 46px 46px, 100% 100%",
-              }}
-            />
-            <span className="absolute left-1/2 top-[44%] z-[4] grid -translate-x-1/2 -translate-y-1/2 place-items-center">
-              <span className="h-[18px] w-[18px] animate-pulse rounded-full bg-orange shadow-[0_0_0_8px_rgba(217,131,36,.3),0_0_0_18px_rgba(217,131,36,.16)]" />
-            </span>
             <span className="absolute inset-x-5 bottom-5 z-[4] flex items-center justify-between gap-4 rounded bg-cream/95 px-5 py-[18px] text-ink backdrop-blur-sm">
               <span>
                 <b className="block font-serif text-[17px]">{t.contact.mapTitle}</b>
                 <span className="text-[13px] text-muted">{t.contact.mapSub}</span>
               </span>
-              <ArrowIcon className="h-[22px] w-[22px] text-green" />
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.contact.mapSub}
+                className="grid h-10 w-10 flex-none place-items-center rounded-full bg-green text-white transition-colors hover:bg-green-deep"
+              >
+                <ArrowIcon className="h-[20px] w-[20px]" />
+              </a>
             </span>
-          </a>
+          </div>
         </Reveal>
       </div>
     </section>

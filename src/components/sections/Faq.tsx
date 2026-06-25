@@ -4,10 +4,7 @@ import { useState } from "react";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { Button } from "@/components/ui/Button";
-import { WhatsAppIcon } from "@/components/icons";
 import { faq } from "@/data/faq";
-import { waLink } from "@/config/site.config";
 import { cn } from "@/lib/utils";
 import type { CmsFaq, CmsHomepageSection } from "@/lib/cms-api";
 
@@ -33,17 +30,6 @@ export function Faq({ cmsItems = [], section = null }: FaqProps) {
         <Reveal>
           <Eyebrow>{section?.eyebrow || t.faq.eyebrow}</Eyebrow>
           <h2 className="mt-4 text-[clamp(32px,4.5vw,52px)]">{section?.title || t.faq.title}</h2>
-
-          <div className="mt-9 rounded-lg bg-green p-9 text-white">
-            <h3 className="text-[27px] text-white">{section?.aside_title || t.faq.asideTitle}</h3>
-            <p className="mb-6 mt-3.5 text-[15px] leading-[1.6] text-white/80">
-              {section?.aside_text || t.faq.asideText}
-            </p>
-            <Button href={waLink()} variant="whatsapp">
-              <WhatsAppIcon className="h-[18px] w-[18px]" />
-              {t.faq.asideCta}
-            </Button>
-          </div>
         </Reveal>
 
         <Reveal className="border-t border-line">

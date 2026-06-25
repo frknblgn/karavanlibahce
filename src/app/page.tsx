@@ -17,6 +17,7 @@ import {
   type CmsExperience,
   type CmsFacility,
   type CmsFaq,
+  type CmsGalleryImage,
   type CmsHome,
   type CmsHomepageSection,
   type CmsNearbyAttraction,
@@ -38,6 +39,7 @@ export default async function HomePage() {
     pricingResponse,
     reviewsResponse,
     faqsResponse,
+    galleryResponse,
   ] = await Promise.all([
     getCmsData<CmsSiteSettings>("/site-settings/"),
     getCmsData<CmsHome>("/home/"),
@@ -48,6 +50,7 @@ export default async function HomePage() {
     getCmsData<CmsCollection<CmsPricing>>("/pricing/"),
     getCmsData<CmsCollection<CmsReview>>("/reviews/"),
     getCmsData<CmsCollection<CmsFaq>>("/faqs/"),
+    getCmsData<CmsCollection<CmsGalleryImage>>("/gallery/"),
   ]);
   const sections = Object.fromEntries(
     (sectionsResponse?.items ?? []).map((section) => [section.key, section]),
@@ -65,7 +68,7 @@ export default async function HomePage() {
         <Pricing cmsItems={pricingResponse?.items ?? []} section={sections.pricing} />
         <Reviews cmsItems={reviewsResponse?.items ?? []} section={sections.reviews} />
         <Faq cmsItems={faqsResponse?.items ?? []} section={sections.faq} />
-        <HomeTeasers />
+        <HomeTeasers cmsGalleryItems={galleryResponse?.items ?? []} />
       </main>
       <Footer settings={settings} />
       <FloatingWhatsApp settings={settings} />

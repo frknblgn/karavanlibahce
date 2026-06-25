@@ -91,18 +91,34 @@ export function Navbar({ settings = null }: NavbarProps) {
             animate={{ opacity: 1 }}
             exit={reduce ? undefined : { opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[85] flex flex-col items-center justify-center gap-7 bg-green-darker/97 lg:hidden"
+            className="fixed inset-0 z-[85] flex flex-col items-start gap-7 bg-green-darker/97 px-[var(--gutter)] pb-10 pt-28 lg:hidden"
           >
+            <button
+              type="button"
+              aria-label="Menüyü kapat"
+              onClick={() => setOpen(false)}
+              className="absolute right-[var(--gutter)] top-6 grid h-11 w-11 place-items-center rounded-full border border-white/20 text-white"
+            >
+              <span className="absolute h-0.5 w-5 rotate-45 bg-current" />
+              <span className="absolute h-0.5 w-5 -rotate-45 bg-current" />
+            </button>
             {navLinks.map((l) => (
               <a
                 key={l.key}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-serif text-2xl text-white"
+                className="font-serif text-3xl text-white"
               >
               {settings?.navigation[l.key] || t.nav[l.key as keyof typeof t.nav]}
               </a>
             ))}
+            <a
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-full bg-orange px-6 py-3 text-[15px] font-semibold text-white"
+            >
+              {settings?.navigation.cta || t.nav.cta}
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

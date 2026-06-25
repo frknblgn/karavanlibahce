@@ -7,10 +7,24 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Photo } from "@/components/ui/Photo";
 import { Reveal } from "@/components/ui/Reveal";
 import { gallery } from "@/data/gallery";
+import type { CmsGalleryImage } from "@/lib/cms-api";
 
-export function HomeTeasers() {
+interface HomeTeasersProps {
+  cmsGalleryItems?: CmsGalleryImage[];
+}
+
+export function HomeTeasers({ cmsGalleryItems = [] }: HomeTeasersProps) {
   const { t, locale } = useLanguage();
-  const preview = gallery.slice(0, 3);
+  const usesCms = cmsGalleryItems.length > 0;
+  const preview = usesCms
+    ? cmsGalleryItems.slice(0, 3).map((item, index) => ({
+        id: String(item.id),
+        image: item.image || gallery[index]?.image || "/images/gallery/under-stars.jpg",
+        tone: "forest" as const,
+        tr: item.alt_text || item.title,
+        en: item.alt_text || item.title,
+      }))
+    : gallery.slice(0, 3);
 
   return (
     <section className="section-y bg-green-darker text-white">
@@ -18,14 +32,23 @@ export function HomeTeasers() {
         <Reveal className="relative min-h-[460px] overflow-hidden rounded-lg">
           <div className="absolute inset-0 grid grid-cols-3 gap-1">
             {preview.map((item) => (
-              <Photo
-                key={item.id}
-                src={item.image}
-                alt={item[locale]}
-                tone={item.tone}
-                sizes="(max-width:1024px) 33vw, 25vw"
-                className="h-full"
-              />
+              usesCms ? (
+                <img
+                  key={item.id}
+                  src={item.image}
+                  alt={item[locale]}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <Photo
+                  key={item.id}
+                  src={item.image}
+                  alt={item[locale]}
+                  tone={item.tone}
+                  sizes="(max-width:1024px) 33vw, 25vw"
+                  className="h-full"
+                />
+              )
             ))}
           </div>
           <div className="absolute inset-0 z-[3] bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
