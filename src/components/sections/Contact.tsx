@@ -13,6 +13,20 @@ interface ContactProps {
   settings?: CmsSiteSettings | null;
 }
 
+const defaultMapEmbedUrl =
+  "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12001.683966795334!2d28.946379116791743!3d40.16253141600033!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca114fed16a187%3A0xf8927df8dffaf21e!2sBURSA%20KARAVANLI%20BAH%C3%87E!5e1!3m2!1str!2sus!4v1782424936293!5m2!1str!2sus";
+
+function getMapEmbedUrl(value: string): string {
+  const iframeSrc = value.match(/src=["']([^"']+)["']/i)?.[1];
+  const url = iframeSrc || value;
+
+  if (url.includes("/maps/embed") || url.includes("output=embed")) {
+    return url;
+  }
+
+  return defaultMapEmbedUrl;
+}
+
 export function Contact({ cmsContact = null, settings = null }: ContactProps) {
   const { t } = useLanguage();
   const phone = cmsContact?.phone || siteConfig.contact.phone;
@@ -21,10 +35,7 @@ export function Contact({ cmsContact = null, settings = null }: ContactProps) {
   const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
   const address = cmsContact?.address || siteConfig.address.full;
   const mapsUrl = cmsContact?.google_maps_embed_url || siteConfig.mapsUrl;
-  const mapEmbedUrl =
-    mapsUrl.includes("/maps/embed") || mapsUrl.includes("output=embed")
-      ? mapsUrl
-      : `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+  const mapEmbedUrl = getMapEmbedUrl(mapsUrl);
   const instagramUrl = settings?.instagram_url || siteConfig.social.instagram;
   const instagramHandle = settings?.instagram_handle || siteConfig.social.instagramHandle;
 
