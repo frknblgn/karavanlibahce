@@ -12,8 +12,9 @@ interface FloatingWhatsAppProps {
 /** Fixed WhatsApp CTA: collapsed to a circle, expands with label on hover. */
 export function FloatingWhatsApp({ settings = null }: FloatingWhatsAppProps) {
   const { t } = useLanguage();
-  const href = settings?.whatsapp_number
-    ? `https://wa.me/${settings.whatsapp_number}?text=${encodeURIComponent(settings.whatsapp_message || "")}`
+  const rawNumber = settings?.whatsapp_number?.replace(/[^\d]/g, "");
+  const href = rawNumber
+    ? `https://wa.me/${rawNumber}?text=${encodeURIComponent(settings?.whatsapp_message || "")}`
     : waLink();
 
   return (

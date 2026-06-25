@@ -61,6 +61,7 @@ export interface ReviewItem {
   id: string;
   name: string;
   color: string;
+  rating?: number;
   role: Localized;
   text: Localized;
 }

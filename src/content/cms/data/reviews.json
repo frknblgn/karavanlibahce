@@ -1,42 +1,69 @@
 {
   "items": [
     {
-      "id": "elif-mert",
-      "name": "Elif & Mert",
+      "id": "saelix",
+      "name": "Saelix Lucida",
       "color": "#A27B5C",
-      "role": {
-        "tr": "Karavan misafiri",
-        "en": "Caravan guests"
-      },
+      "rating": 5,
+      "role": { "tr": "Google Yorumu", "en": "Google Review" },
       "text": {
-        "tr": "Şehirden bir saat uzakta ama bambaşka bir dünya. Sabah kuş sesleriyle uyandık, akşam ateş başında oturduk. Kesinlikle döneceğiz.",
-        "en": "An hour from the city but a different world entirely. We woke to birdsong and spent the evening by the fire. We'll absolutely be back."
+        "tr": "Mükemmel bir manzara ve tertemiz ortak kullanım alanları ile oldukça konforlu zaman geçirebileceğiniz bir yer. Elektrik, mutfak, tuvalet ve duş/sıcak su imkânları mevcut. İşletmecileri de gerçekten ilgili ve düşünceli insanlar.",
+        "en": "A place where you can spend a very comfortable time with a magnificent view and spotlessly clean communal areas. Electricity, kitchen, toilet and hot shower facilities are available. The managers are truly attentive and considerate people."
       }
     },
     {
-      "id": "canan",
-      "name": "Canan Y.",
+      "id": "soner",
+      "name": "Soner Atik",
       "color": "#3E5F44",
-      "role": {
-        "tr": "Ailecek konaklama",
-        "en": "Family stay"
-      },
+      "rating": 5,
+      "role": { "tr": "Google Yorumu", "en": "Google Review" },
       "text": {
-        "tr": "Çocuklarla geldik, hepimiz dinlenmiş döndük. Alan çok temiz, sahipleri inanılmaz ilgili. Huzurun adresi.",
-        "en": "We came with the kids and all left rested. Spotless grounds, incredibly caring hosts. The address of peace."
+        "tr": "Harika doğa manzaralı, çok sessiz, tertemiz havası ile kendine ait güzel bir doğaya sahip bir karavan kamp alanı. Burayı işleten Ferhat Bey ile Duygu Hanım bizleri içten ve sıcak kanlı bir şekilde karşıladı.",
+        "en": "A caravan campsite with wonderful nature views, very quiet and crystal-clean air. Ferhat Bey and Duygu Hanım, who run this place, welcomed us warmly and sincerely."
       }
     },
     {
-      "id": "gorkem",
-      "name": "Görkem A.",
+      "id": "mehmet-bilal",
+      "name": "Mehmet Bilal Özer",
       "color": "#D98324",
-      "role": {
-        "tr": "Karavan misafiri",
-        "en": "Caravan guest"
-      },
+      "rating": 5,
+      "role": { "tr": "Google Yorumu", "en": "Google Review" },
       "text": {
-        "tr": "Karavanımızla konakladık, elektrik ve su bağlantısı sorunsuzdu. Gün batımı manzarası tek kelimeyle muhteşem.",
-        "en": "Stayed with our caravan; power and water hook-ups were flawless. The sunset view is simply spectacular."
+        "tr": "Her şey on numara: hijyen, sakinlik, manzara hepsi bir arada. Tekrar gelirsem düşünmeden tekrar kalabileceğim bir yer.",
+        "en": "Everything is top notch: hygiene, tranquility, scenery all in one place. A place I would stay again without any hesitation."
+      }
+    },
+    {
+      "id": "talha",
+      "name": "Talha Sakar",
+      "color": "#A27B5C",
+      "rating": 5,
+      "role": { "tr": "Google Yorumu", "en": "Google Review" },
+      "text": {
+        "tr": "Ailecek geldik, çadır kurduk ve çok memnun kaldık. Doğa ve şehir manzarası, temiz havası ile çok güzel bir işletme. Tuvaletleri ve duşu çok temiz, her şey yepisyeni. Aile işletmesi olması da ayrı bir güzel.",
+        "en": "We came as a family, set up our tent and had a wonderful stay. Beautiful nature and city views, fresh air. Very clean toilets and showers, everything brand new. Being a family business makes it extra special."
+      }
+    },
+    {
+      "id": "ruhan",
+      "name": "Ruhan Elibol",
+      "color": "#3E5F44",
+      "rating": 5,
+      "role": { "tr": "Google Yorumu", "en": "Google Review" },
+      "text": {
+        "tr": "Manzarası ve havası mükemmel bir karavan kamp alanı. Tuvaletler sürekli temizleniyor. İşletmeciler ve yıllık konaklayanlar gerçekten çok iyi ve ilgili insanlar. Tavsiye edebileceğimiz bir kamp yeri.",
+        "en": "A caravan campsite with a magnificent view and fresh air. Toilets are continuously cleaned. The managers and long-term guests are really great and attentive people. A campsite we can recommend."
+      }
+    },
+    {
+      "id": "markus",
+      "name": "Markus Tonak",
+      "color": "#D98324",
+      "rating": 5,
+      "role": { "tr": "Google Yorumu", "en": "Google Review" },
+      "text": {
+        "tr": "Burada mükemmel bir konaklama ve genel deneyim yaşadık. 5/5+ puan hak ediyor. İşletme sahibi çok yardımsever ve gerçek bir misafirperverlik anlayışı var.",
+        "en": "We had an excellent stay and overall experience here. 5/5+ rating. The owner is very helpful and full of genuine hospitality."
       }
     }
   ]

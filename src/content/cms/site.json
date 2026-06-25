@@ -7,8 +7,8 @@
     "en": "A premium caravan and camping escape in nature, one hour from Bursa. Caravan stays, a tent area and day visits."
   },
   "contact": {
-    "phone": "+90 5XX XXX XX XX",
-    "whatsapp": "905XXXXXXXXX",
+    "phone": "+90 535 208 90 30",
+    "whatsapp": "905352089030",
     "whatsappMessage": "Merhaba! Bursa Karavanlı Bahçe için rezervasyon yapmak istiyorum.",
     "email": "merhaba@bursakaravanlibahce.com"
   },
@@ -54,9 +54,11 @@
     "logo": "/logo.png"
   },
   "reviews": {
-    "show": false,
-    "score": "",
-    "count": ""
+    "show": true,
+    "score": "4,9",
+    "count": "52",
+    "googleUrl": "https://www.google.com/maps/place/BURSA+KARAVANLI+BAH%C3%87E/@40.1282903,28.9426067,9547m/data=!3m1!1e3!4m8!3m7!1s0x14ca114fed16a187:0xf8927df8dffaf21e!8m2!3d40.1613042!4d28.9527295!9m1!1b1!16s%2Fg%2F11lcz2g62j",
+    "googleWriteUrl": "https://www.google.com/maps?cid=17911517175869010462&action=write-review"
   },
   "defaultLocale": "tr",
   "hero": {

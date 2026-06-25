@@ -30,7 +30,7 @@ function getMapEmbedUrl(value: string): string {
 export function Contact({ cmsContact = null, settings = null }: ContactProps) {
   const { t } = useLanguage();
   const phone = cmsContact?.phone || siteConfig.contact.phone;
-  const whatsapp = cmsContact?.whatsapp_number || settings?.whatsapp_number || siteConfig.contact.whatsapp;
+  const whatsapp = (cmsContact?.whatsapp_number || settings?.whatsapp_number || siteConfig.contact.whatsapp).replace(/[^\d]/g, "");
   const whatsappMessage = settings?.whatsapp_message || siteConfig.contact.whatsappMessage;
   const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
   const address = cmsContact?.address || siteConfig.address.full;

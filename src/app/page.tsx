@@ -22,7 +22,6 @@ import {
   type CmsHomepageSection,
   type CmsNearbyAttraction,
   type CmsPricing,
-  type CmsReview,
   type CmsSiteSettings,
 } from "@/lib/cms-api";
 
@@ -37,7 +36,6 @@ export default async function HomePage() {
     facilitiesResponse,
     nearbyResponse,
     pricingResponse,
-    reviewsResponse,
     faqsResponse,
     galleryResponse,
   ] = await Promise.all([
@@ -48,7 +46,6 @@ export default async function HomePage() {
     getCmsData<CmsCollection<CmsFacility>>("/facilities/"),
     getCmsData<CmsCollection<CmsNearbyAttraction>>("/nearby-attractions/"),
     getCmsData<CmsCollection<CmsPricing>>("/pricing/"),
-    getCmsData<CmsCollection<CmsReview>>("/reviews/"),
     getCmsData<CmsCollection<CmsFaq>>("/faqs/"),
     getCmsData<CmsCollection<CmsGalleryImage>>("/gallery/"),
   ]);
@@ -66,7 +63,7 @@ export default async function HomePage() {
         <Facilities cmsItems={facilitiesResponse?.items ?? []} home={home} section={sections.facilities} />
         <Nearby cmsItems={nearbyResponse?.items ?? []} section={sections.nearby} />
         <Pricing cmsItems={pricingResponse?.items ?? []} section={sections.pricing} />
-        <Reviews cmsItems={reviewsResponse?.items ?? []} section={sections.reviews} />
+        <Reviews section={sections.reviews} />
         <Faq cmsItems={faqsResponse?.items ?? []} section={sections.faq} />
         <HomeTeasers cmsGalleryItems={galleryResponse?.items ?? []} />
       </main>
