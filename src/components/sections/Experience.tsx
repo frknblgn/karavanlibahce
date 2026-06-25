@@ -6,23 +6,26 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Photo } from "@/components/ui/Photo";
 import { experiences } from "@/data/experiences";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsExperience } from "@/lib/cms-api";
+import type { CmsExperience, CmsHomepageSection } from "@/lib/cms-api";
 
-export function Experience() {
+interface ExperienceProps {
+  cmsItems?: CmsExperience[];
+  section?: CmsHomepageSection | null;
+}
+
+export function Experience({ cmsItems = [], section = null }: ExperienceProps) {
   const { t, locale } = useLanguage();
   const reduce = useReducedMotion();
-  const cms = useCmsData<CmsCollection<CmsExperience>>("/experiences/", { items: [] });
-  const usesCms = cms.items.length > 0;
-  const items = cms.items.length ? cms.items.map((item, index) => ({ id: String(item.id), image: item.image || experiences[index]?.image || "/images/experience/caravan-stays.jpg", tone: "forest" as const, tr: { title: item.title, description: item.description }, en: { title: item.title, description: item.description } })) : experiences;
+  const usesCms = cmsItems.length > 0;
+  const items = cmsItems.length ? cmsItems.map((item, index) => ({ id: String(item.id), image: item.image || experiences[index]?.image || "/images/experience/caravan-stays.jpg", tone: "forest" as const, tr: { title: item.title, description: item.description }, en: { title: item.title, description: item.description } })) : experiences;
 
   return (
     <section id="experience" data-screen-label="Experience" className="section-y">
       <div className="wrap">
         <SectionHeading
-          eyebrow={t.experience.eyebrow}
-          title={t.experience.title}
-          lead={t.experience.lead}
+          eyebrow={section?.eyebrow || t.experience.eyebrow}
+          title={section?.title || t.experience.title}
+          lead={section?.lead || t.experience.lead}
           align="center"
         />
 

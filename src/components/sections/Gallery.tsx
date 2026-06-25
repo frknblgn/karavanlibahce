@@ -9,8 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { waLink } from "@/config/site.config";
 import { gallery as fallbackGallery } from "@/data/gallery";
 import type { GalleryCategory } from "@/types";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsGalleryImage, CmsGalleryPage } from "@/lib/cms-api";
+import type { CmsGalleryImage, CmsGalleryPage } from "@/lib/cms-api";
 import {
   ArrowIcon,
   ExpandIcon,
@@ -19,12 +18,16 @@ import {
   ChevronRight,
 } from "@/components/icons";
 
-export function Gallery() {
+interface GalleryProps {
+  cmsItems?: CmsGalleryImage[];
+  page?: CmsGalleryPage | null;
+}
+
+export function Gallery({ cmsItems = [], page = null }: GalleryProps) {
   const { t, locale } = useLanguage();
-  const cmsGallery = useCmsData<CmsCollection<CmsGalleryImage>>("/gallery/", { items: [] });
-  const page = useCmsData<CmsGalleryPage | null>("/gallery-page/", null);
-  const gallery = cmsGallery.items.length
-    ? cmsGallery.items.map((item, index) => ({
+  const usesCms = cmsItems.length > 0;
+  const gallery = cmsItems.length
+    ? cmsItems.map((item, index) => ({
         id: String(item.id),
         image: item.image || fallbackGallery[index]?.image || "/images/gallery/under-stars.jpg",
         tone: "forest" as const,
@@ -110,16 +113,24 @@ export function Gallery() {
               className="group relative mb-[18px] block w-full break-inside-avoid overflow-hidden rounded-lg shadow-sm"
               aria-label={g[locale]}
             >
-              <Photo
-                src={g.image}
-                alt={g[locale]}
-                tone={g.tone}
-                fill={false}
-                width={800}
-                height={g.tall ? 1100 : 800}
-                sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
-                imgClassName="transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
-              />
+              {usesCms ? (
+                <img
+                  src={g.image}
+                  alt={g[locale]}
+                  className="h-auto w-full transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
+                />
+              ) : (
+                <Photo
+                  src={g.image}
+                  alt={g[locale]}
+                  tone={g.tone}
+                  fill={false}
+                  width={800}
+                  height={g.tall ? 1100 : 800}
+                  sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+                  imgClassName="transition-transform duration-[1100ms] ease-brand group-hover:scale-105"
+                />
+              )}
               <span className="absolute right-3.5 top-3.5 z-[4] grid h-9 w-9 scale-90 place-items-center rounded-full bg-white/90 opacity-0 transition duration-300 ease-brand group-hover:scale-100 group-hover:opacity-100">
                 <ExpandIcon className="h-4 w-4 text-ink" />
               </span>
@@ -184,16 +195,24 @@ export function Gallery() {
             >
               <ChevronRight className="h-5 w-5" />
             </button>
-            <Photo
-              src={active.image}
-              alt={active[locale]}
-              tone={active.tone}
-              fill={false}
-              width={1500}
-              height={1000}
-              sizes="92vw"
-              className="aspect-[3/2] w-full rounded-lg shadow-lg"
-            />
+            {usesCms ? (
+              <img
+                src={active.image}
+                alt={active[locale]}
+                className="max-h-[78vh] w-full rounded-lg object-contain shadow-lg"
+              />
+            ) : (
+              <Photo
+                src={active.image}
+                alt={active[locale]}
+                tone={active.tone}
+                fill={false}
+                width={1500}
+                height={1000}
+                sizes="92vw"
+                className="aspect-[3/2] w-full rounded-lg shadow-lg"
+              />
+            )}
             <figcaption className="mt-4 text-center text-[14px] tracking-[0.04em] text-white/85">
               {active[locale]}
             </figcaption>

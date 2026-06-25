@@ -7,16 +7,19 @@ import { Photo } from "@/components/ui/Photo";
 import { Icon } from "@/components/icons";
 import { facilities } from "@/data/facilities";
 import { siteConfig } from "@/config/site.config";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsFacility, CmsHome } from "@/lib/cms-api";
+import type { CmsFacility, CmsHome, CmsHomepageSection } from "@/lib/cms-api";
 import type { IconName } from "@/types";
 
-export function Facilities() {
+interface FacilitiesProps {
+  cmsItems?: CmsFacility[];
+  home?: CmsHome | null;
+  section?: CmsHomepageSection | null;
+}
+
+export function Facilities({ cmsItems = [], home = null, section = null }: FacilitiesProps) {
   const { t, locale } = useLanguage();
-  const cmsFacilities = useCmsData<CmsCollection<CmsFacility>>("/facilities/", { items: [] });
-  const home = useCmsData<CmsHome | null>("/home/", null);
-  const items = cmsFacilities.items.length
-    ? cmsFacilities.items.map((item, index) => ({
+  const items = cmsItems.length
+    ? cmsItems.map((item, index) => ({
         id: String(item.id),
         icon: (item.icon_name || facilities[index]?.icon || "bolt") as IconName,
         tr: item.title,
@@ -40,9 +43,9 @@ export function Facilities() {
         </Reveal>
 
         <Reveal>
-          <Eyebrow>{t.facilities.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-[clamp(32px,4.5vw,52px)]">{t.facilities.title}</h2>
-          <p className="lead mt-[18px] max-w-[460px]">{t.facilities.lead}</p>
+          <Eyebrow>{section?.eyebrow || t.facilities.eyebrow}</Eyebrow>
+          <h2 className="mt-4 text-[clamp(32px,4.5vw,52px)]">{section?.title || t.facilities.title}</h2>
+          <p className="lead mt-[18px] max-w-[460px]">{section?.lead || t.facilities.lead}</p>
 
           <div className="mt-[38px] grid grid-cols-1 gap-x-9 sm:grid-cols-2">
             {items.map((f) => (

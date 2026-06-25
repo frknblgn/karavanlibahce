@@ -6,15 +6,18 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { reviews } from "@/data/reviews";
 import { siteConfig } from "@/config/site.config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsReview } from "@/lib/cms-api";
+import type { CmsHomepageSection, CmsReview } from "@/lib/cms-api";
 
-export function Reviews() {
+interface ReviewsProps {
+  cmsItems?: CmsReview[];
+  section?: CmsHomepageSection | null;
+}
+
+export function Reviews({ cmsItems = [], section = null }: ReviewsProps) {
   const { t, locale } = useLanguage();
   const reduce = useReducedMotion();
-  const cmsReviews = useCmsData<CmsCollection<CmsReview>>("/reviews/", { items: [] });
-  const items = cmsReviews.items.length
-    ? cmsReviews.items.map((item, index) => ({
+  const items = cmsItems.length
+    ? cmsItems.map((item, index) => ({
         id: String(item.id),
         name: item.name,
         color: ["#A27B5C", "#3E5F44", "#D98324"][index % 3],
@@ -29,7 +32,7 @@ export function Reviews() {
     <section id="reviews" data-screen-label="Reviews" className="section-y bg-cream">
       <div className="wrap">
         <div className="flex flex-wrap items-end justify-between gap-8">
-          <SectionHeading eyebrow={t.reviews.eyebrow} title={t.reviews.title} />
+          <SectionHeading eyebrow={section?.eyebrow || t.reviews.eyebrow} title={section?.title || t.reviews.title} />
           {showRating && (
             <div className="flex items-center gap-3.5">
               <span className="font-serif text-[46px] leading-none">

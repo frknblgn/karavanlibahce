@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { BlogIndex } from "./BlogIndex";
 import { siteConfig } from "@/config/site.config";
+import { getCmsData, type CmsSiteSettings } from "@/lib/cms-api";
 
 export const dynamic = "force-dynamic";
 
@@ -16,13 +17,16 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default async function BlogPage() {
-  const posts = await getAllPosts();
+  const [posts, settings] = await Promise.all([
+    getAllPosts(),
+    getCmsData<CmsSiteSettings>("/site-settings/"),
+  ]);
   return (
     <>
-      <BlogHeader />
+      <BlogHeader settings={settings} />
       <BlogIndex posts={posts} />
-      <Footer />
-      <FloatingWhatsApp />
+      <Footer settings={settings} />
+      <FloatingWhatsApp settings={settings} />
     </>
   );
 }

@@ -7,15 +7,17 @@ import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 import { Logo } from "@/components/layout/Logo";
 import { cn } from "@/lib/utils";
-import { useCmsData } from "@/hooks/useCmsData";
 import type { CmsSiteSettings } from "@/lib/cms-api";
 
-export function Navbar() {
+interface NavbarProps {
+  settings?: CmsSiteSettings | null;
+}
+
+export function Navbar({ settings = null }: NavbarProps) {
   const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
-  const settings = useCmsData<CmsSiteSettings | null>("/site-settings/", null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);

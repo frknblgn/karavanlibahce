@@ -4,15 +4,18 @@ import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Photo } from "@/components/ui/Photo";
 import { nearby } from "@/data/nearby";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsNearbyAttraction } from "@/lib/cms-api";
+import type { CmsHomepageSection, CmsNearbyAttraction } from "@/lib/cms-api";
 
-export function Nearby() {
+interface NearbyProps {
+  cmsItems?: CmsNearbyAttraction[];
+  section?: CmsHomepageSection | null;
+}
+
+export function Nearby({ cmsItems = [], section = null }: NearbyProps) {
   const { t, locale } = useLanguage();
-  const cmsNearby = useCmsData<CmsCollection<CmsNearbyAttraction>>("/nearby-attractions/", { items: [] });
-  const usesCms = cmsNearby.items.length > 0;
-  const items = cmsNearby.items.length
-    ? cmsNearby.items.map((item, index) => ({
+  const usesCms = cmsItems.length > 0;
+  const items = cmsItems.length
+    ? cmsItems.map((item, index) => ({
         id: String(item.id),
         image: item.image || nearby[index]?.image || "/images/nearby/dagyenice.jpg",
         tone: "forest" as const,
@@ -26,9 +29,9 @@ export function Nearby() {
     <section id="nearby" data-screen-label="Nearby" className="section-y bg-green-deep text-white">
       <div className="wrap">
         <SectionHeading
-          eyebrow={t.nearby.eyebrow}
-          title={t.nearby.title}
-          lead={t.nearby.lead}
+          eyebrow={section?.eyebrow || t.nearby.eyebrow}
+          title={section?.title || t.nearby.title}
+          lead={section?.lead || t.nearby.lead}
           light
         />
 

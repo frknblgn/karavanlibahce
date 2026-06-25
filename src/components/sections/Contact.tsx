@@ -5,23 +5,29 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon, InstagramIcon, PhoneIcon, PinIcon, ArrowIcon } from "@/components/icons";
-import { siteConfig, waLink, telLink } from "@/config/site.config";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsContact } from "@/lib/cms-api";
+import { siteConfig } from "@/config/site.config";
+import type { CmsContact, CmsSiteSettings } from "@/lib/cms-api";
 
-export function Contact() {
+interface ContactProps {
+  cmsContact?: CmsContact | null;
+  settings?: CmsSiteSettings | null;
+}
+
+export function Contact({ cmsContact = null, settings = null }: ContactProps) {
   const { t } = useLanguage();
-  const cmsContact = useCmsData<CmsContact | null>("/contact/", null);
   const phone = cmsContact?.phone || siteConfig.contact.phone;
-  const whatsapp = cmsContact?.whatsapp_number || siteConfig.contact.whatsapp;
-  const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`;
+  const whatsapp = cmsContact?.whatsapp_number || settings?.whatsapp_number || siteConfig.contact.whatsapp;
+  const whatsappMessage = settings?.whatsapp_message || siteConfig.contact.whatsappMessage;
+  const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(whatsappMessage)}`;
   const address = cmsContact?.address || siteConfig.address.full;
   const mapsUrl = cmsContact?.google_maps_embed_url || siteConfig.mapsUrl;
+  const instagramUrl = settings?.instagram_url || siteConfig.social.instagram;
+  const instagramHandle = settings?.instagram_handle || siteConfig.social.instagramHandle;
 
   const rows = [
     { icon: <WhatsAppIcon className="h-full w-full" />, label: t.contact.whatsapp, value: phone, href: whatsappLink, external: true },
     { icon: <PhoneIcon className="h-full w-full" />, label: t.contact.phone, value: phone, href: `tel:${phone.replace(/[^\d+]/g, "")}`, external: false },
-    { icon: <InstagramIcon className="h-full w-full" />, label: t.contact.instagram, value: siteConfig.social.instagramHandle, href: siteConfig.social.instagram, external: true },
+    { icon: <InstagramIcon className="h-full w-full" />, label: t.contact.instagram, value: instagramHandle, href: instagramUrl, external: true },
     { icon: <PinIcon className="h-full w-full" />, label: t.contact.address, value: address, href: mapsUrl, external: true },
   ];
 
@@ -57,7 +63,7 @@ export function Contact() {
               <WhatsAppIcon className="h-[18px] w-[18px]" />
               {t.contact.primaryCta}
             </Button>
-            <Button href={siteConfig.social.instagram} variant="ghost">
+            <Button href={instagramUrl} variant="ghost">
               {t.contact.secondaryCta}
             </Button>
           </div>

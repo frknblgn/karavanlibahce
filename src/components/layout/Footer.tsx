@@ -5,8 +5,13 @@ import { footerLinks } from "@/config/navigation";
 import { siteConfig } from "@/config/site.config";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { Logo } from "./Logo";
+import type { CmsSiteSettings } from "@/lib/cms-api";
 
-export function Footer() {
+interface FooterProps {
+  settings?: CmsSiteSettings | null;
+}
+
+export function Footer({ settings = null }: FooterProps) {
   const { t } = useLanguage();
   const year = new Date().getFullYear();
 
@@ -19,7 +24,7 @@ export function Footer() {
 
         <nav className="flex flex-wrap gap-6 text-[14px]">
           {footerLinks.map((l) => {
-            const label = t.nav[l.key as keyof typeof t.nav];
+            const label = settings?.navigation[l.key] || t.nav[l.key as keyof typeof t.nav];
             return l.href.startsWith("/") ? (
               <Link key={l.key} href={l.href} className="transition-colors hover:text-white">
                 {label}
@@ -33,7 +38,7 @@ export function Footer() {
         </nav>
 
         <small className="text-[13px]">
-          © {year} {siteConfig.name} · {t.footer.rights}
+          © {year} {settings?.site_name || siteConfig.name} · {settings?.footer.rights || t.footer.rights}
         </small>
       </div>
     </footer>

@@ -10,8 +10,7 @@ import { pricing } from "@/data/pricing";
 import { waLink } from "@/config/site.config";
 import { fadeUp, stagger, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsPricing } from "@/lib/cms-api";
+import type { CmsHomepageSection, CmsPricing } from "@/lib/cms-api";
 import type { IconName } from "@/types";
 
 const Check = () => (
@@ -20,19 +19,23 @@ const Check = () => (
   </svg>
 );
 
-export function Pricing() {
+interface PricingProps {
+  cmsItems?: CmsPricing[];
+  section?: CmsHomepageSection | null;
+}
+
+export function Pricing({ cmsItems = [], section = null }: PricingProps) {
   const { t, locale } = useLanguage();
   const reduce = useReducedMotion();
-  const cms = useCmsData<CmsCollection<CmsPricing>>("/pricing/", { items: [] });
-  const items = cms.items.length ? cms.items.map((item) => ({ id: String(item.id), icon: (item.icon_name || "caravan") as IconName, featured: item.featured, tr: { title: item.title, subtitle: item.subtitle, features: item.features }, en: { title: item.title, subtitle: item.subtitle, features: item.features } })) : pricing;
+  const items = cmsItems.length ? cmsItems.map((item) => ({ id: String(item.id), icon: (item.icon_name || "caravan") as IconName, featured: item.featured, tr: { title: item.title, subtitle: item.subtitle, features: item.features }, en: { title: item.title, subtitle: item.subtitle, features: item.features } })) : pricing;
 
   return (
     <section id="pricing" data-screen-label="Pricing" className="section-y bg-beige">
       <div className="wrap">
         <SectionHeading
-          eyebrow={t.pricing.eyebrow}
-          title={t.pricing.title}
-          lead={t.pricing.lead}
+          eyebrow={section?.eyebrow || t.pricing.eyebrow}
+          title={section?.title || t.pricing.title}
+          lead={section?.lead || t.pricing.lead}
           align="center"
         />
 
@@ -117,7 +120,7 @@ export function Pricing() {
 
         <Reveal>
           <p className="mx-auto mt-7 max-w-[680px] text-center text-[13.5px] text-muted">
-            {t.pricing.note}
+            {section?.note || t.pricing.note}
           </p>
         </Reveal>
       </div>

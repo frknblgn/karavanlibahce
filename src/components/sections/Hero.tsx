@@ -7,12 +7,14 @@ import { Photo } from "@/components/ui/Photo";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { siteConfig } from "@/config/site.config";
-import { useCmsData } from "@/hooks/useCmsData";
 import type { CmsHome } from "@/lib/cms-api";
 
-export function Hero() {
+interface HeroProps {
+  home?: CmsHome | null;
+}
+
+export function Hero({ home = null }: HeroProps) {
   const { t } = useLanguage();
-  const home = useCmsData<CmsHome | null>("/home/", null);
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
 

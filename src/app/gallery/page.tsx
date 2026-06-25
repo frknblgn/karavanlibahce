@@ -4,6 +4,13 @@ import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { Footer } from "@/components/layout/Footer";
 import { Gallery } from "@/components/sections/Gallery";
 import { siteConfig } from "@/config/site.config";
+import {
+  getCmsData,
+  type CmsCollection,
+  type CmsGalleryImage,
+  type CmsGalleryPage,
+  type CmsSiteSettings,
+} from "@/lib/cms-api";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -13,15 +20,23 @@ export const metadata: Metadata = buildMetadata({
   image: siteConfig.hero.image,
 });
 
-export default function GalleryPage() {
+export const dynamic = "force-dynamic";
+
+export default async function GalleryPage() {
+  const [settings, galleryResponse, page] = await Promise.all([
+    getCmsData<CmsSiteSettings>("/site-settings/"),
+    getCmsData<CmsCollection<CmsGalleryImage>>("/gallery/"),
+    getCmsData<CmsGalleryPage>("/gallery-page/"),
+  ]);
+
   return (
     <>
-      <BlogHeader />
+      <BlogHeader settings={settings} />
       <main>
-        <Gallery />
+        <Gallery cmsItems={galleryResponse?.items ?? []} page={page} />
       </main>
-      <Footer />
-      <FloatingWhatsApp />
+      <Footer settings={settings} />
+      <FloatingWhatsApp settings={settings} />
     </>
   );
 }

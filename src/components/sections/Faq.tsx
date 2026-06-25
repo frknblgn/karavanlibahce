@@ -9,32 +9,35 @@ import { WhatsAppIcon } from "@/components/icons";
 import { faq } from "@/data/faq";
 import { waLink } from "@/config/site.config";
 import { cn } from "@/lib/utils";
-import { useCmsData } from "@/hooks/useCmsData";
-import type { CmsCollection, CmsFaq } from "@/lib/cms-api";
+import type { CmsFaq, CmsHomepageSection } from "@/lib/cms-api";
 
-export function Faq() {
+interface FaqProps {
+  cmsItems?: CmsFaq[];
+  section?: CmsHomepageSection | null;
+}
+
+export function Faq({ cmsItems = [], section = null }: FaqProps) {
   const { t, locale } = useLanguage();
-  const cmsFaqs = useCmsData<CmsCollection<CmsFaq>>("/faqs/", { items: [] });
-  const items = cmsFaqs.items.length
-    ? cmsFaqs.items.map((item) => ({
+  const items = cmsItems.length
+    ? cmsItems.map((item) => ({
         id: String(item.id),
         tr: { q: item.question, a: item.answer.replace(/<[^>]*>/g, "") },
         en: { q: item.question, a: item.answer.replace(/<[^>]*>/g, "") },
       }))
     : faq;
-  const [open, setOpen] = useState<string | null>(faq[0]?.id ?? null);
+  const [open, setOpen] = useState<string | null>(items[0]?.id ?? null);
 
   return (
     <section id="faq" data-screen-label="FAQ" className="section-y">
       <div className="wrap grid items-start gap-[clamp(40px,6vw,90px)] lg:grid-cols-[0.85fr_1.15fr]">
         <Reveal>
-          <Eyebrow>{t.faq.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-[clamp(32px,4.5vw,52px)]">{t.faq.title}</h2>
+          <Eyebrow>{section?.eyebrow || t.faq.eyebrow}</Eyebrow>
+          <h2 className="mt-4 text-[clamp(32px,4.5vw,52px)]">{section?.title || t.faq.title}</h2>
 
           <div className="mt-9 rounded-lg bg-green p-9 text-white">
-            <h3 className="text-[27px] text-white">{t.faq.asideTitle}</h3>
+            <h3 className="text-[27px] text-white">{section?.aside_title || t.faq.asideTitle}</h3>
             <p className="mb-6 mt-3.5 text-[15px] leading-[1.6] text-white/80">
-              {t.faq.asideText}
+              {section?.aside_text || t.faq.asideText}
             </p>
             <Button href={waLink()} variant="whatsapp">
               <WhatsAppIcon className="h-[18px] w-[18px]" />

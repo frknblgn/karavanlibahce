@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { waLink } from "@/config/site.config";
-import { useCmsData } from "@/hooks/useCmsData";
 import type { CmsContactPage } from "@/lib/cms-api";
 
-export function ContactPageDetails() {
+interface ContactPageDetailsProps {
+  page?: CmsContactPage | null;
+}
+
+export function ContactPageDetails({ page = null }: ContactPageDetailsProps) {
   const { t } = useLanguage();
-  const page = useCmsData<CmsContactPage | null>("/contact-page/", null);
 
   return (
     <section className="section-y">

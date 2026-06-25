@@ -11,24 +11,64 @@ import { Pricing } from "@/components/sections/Pricing";
 import { Reviews } from "@/components/sections/Reviews";
 import { Faq } from "@/components/sections/Faq";
 import { HomeTeasers } from "@/components/sections/HomeTeasers";
+import {
+  getCmsData,
+  type CmsCollection,
+  type CmsExperience,
+  type CmsFacility,
+  type CmsFaq,
+  type CmsHome,
+  type CmsHomepageSection,
+  type CmsNearbyAttraction,
+  type CmsPricing,
+  type CmsReview,
+  type CmsSiteSettings,
+} from "@/lib/cms-api";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const [
+    settings,
+    home,
+    sectionsResponse,
+    experiencesResponse,
+    facilitiesResponse,
+    nearbyResponse,
+    pricingResponse,
+    reviewsResponse,
+    faqsResponse,
+  ] = await Promise.all([
+    getCmsData<CmsSiteSettings>("/site-settings/"),
+    getCmsData<CmsHome>("/home/"),
+    getCmsData<CmsCollection<CmsHomepageSection>>("/homepage-sections/"),
+    getCmsData<CmsCollection<CmsExperience>>("/experiences/"),
+    getCmsData<CmsCollection<CmsFacility>>("/facilities/"),
+    getCmsData<CmsCollection<CmsNearbyAttraction>>("/nearby-attractions/"),
+    getCmsData<CmsCollection<CmsPricing>>("/pricing/"),
+    getCmsData<CmsCollection<CmsReview>>("/reviews/"),
+    getCmsData<CmsCollection<CmsFaq>>("/faqs/"),
+  ]);
+  const sections = Object.fromEntries(
+    (sectionsResponse?.items ?? []).map((section) => [section.key, section]),
+  ) as Record<string, CmsHomepageSection | undefined>;
+
   return (
     <>
       <LocalBusinessJsonLd />
-      <Navbar />
+      <Navbar settings={settings} />
       <main>
-        <Hero />
-        <Experience />
-        <Facilities />
-        <Nearby />
-        <Pricing />
-        <Reviews />
-        <Faq />
+        <Hero home={home} />
+        <Experience cmsItems={experiencesResponse?.items ?? []} section={sections.experience} />
+        <Facilities cmsItems={facilitiesResponse?.items ?? []} home={home} section={sections.facilities} />
+        <Nearby cmsItems={nearbyResponse?.items ?? []} section={sections.nearby} />
+        <Pricing cmsItems={pricingResponse?.items ?? []} section={sections.pricing} />
+        <Reviews cmsItems={reviewsResponse?.items ?? []} section={sections.reviews} />
+        <Faq cmsItems={faqsResponse?.items ?? []} section={sections.faq} />
         <HomeTeasers />
       </main>
-      <Footer />
-      <FloatingWhatsApp />
+      <Footer settings={settings} />
+      <FloatingWhatsApp settings={settings} />
     </>
   );
 }

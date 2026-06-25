@@ -11,6 +11,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { BlogPostingJsonLd } from "@/components/seo/JsonLd";
 import { mdxComponents } from "./mdx-components";
+import { getCmsData, type CmsSiteSettings } from "@/lib/cms-api";
 
 export const dynamic = "force-dynamic";
 
@@ -32,13 +33,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Params) {
-  const post = await getPostBySlug(params.slug);
+  const [post, settings] = await Promise.all([
+    getPostBySlug(params.slug),
+    getCmsData<CmsSiteSettings>("/site-settings/"),
+  ]);
   if (!post) notFound();
 
   return (
     <>
       <BlogPostingJsonLd post={post} />
-      <BlogHeader />
+      <BlogHeader settings={settings} />
 
       <article className="section-y">
         <div className="wrap max-w-[760px]">
@@ -83,8 +87,8 @@ export default async function BlogPostPage({ params }: Params) {
         </div>
       </article>
 
-      <Footer />
-      <FloatingWhatsApp />
+      <Footer settings={settings} />
+      <FloatingWhatsApp settings={settings} />
     </>
   );
 }

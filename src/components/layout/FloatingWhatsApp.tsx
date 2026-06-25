@@ -3,14 +3,22 @@
 import { waLink } from "@/config/site.config";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
 import { WhatsAppIcon } from "@/components/icons";
+import type { CmsSiteSettings } from "@/lib/cms-api";
 
-/** Fixed WhatsApp CTA — collapsed to a circle, expands with label on hover. */
-export function FloatingWhatsApp() {
+interface FloatingWhatsAppProps {
+  settings?: CmsSiteSettings | null;
+}
+
+/** Fixed WhatsApp CTA: collapsed to a circle, expands with label on hover. */
+export function FloatingWhatsApp({ settings = null }: FloatingWhatsAppProps) {
   const { t } = useLanguage();
+  const href = settings?.whatsapp_number
+    ? `https://wa.me/${settings.whatsapp_number}?text=${encodeURIComponent(settings.whatsapp_message || "")}`
+    : waLink();
 
   return (
     <a
-      href={waLink()}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t.whatsappFab}

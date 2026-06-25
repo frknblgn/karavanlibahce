@@ -6,9 +6,14 @@ import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 import { Logo } from "./Logo";
 import { navLinks } from "@/config/navigation";
 import { Button } from "@/components/ui/Button";
+import type { CmsSiteSettings } from "@/lib/cms-api";
 
 /** Solid header for inner pages where there is no hero behind it. */
-export function BlogHeader() {
+interface BlogHeaderProps {
+  settings?: CmsSiteSettings | null;
+}
+
+export function BlogHeader({ settings = null }: BlogHeaderProps) {
   const { t } = useLanguage();
   return (
     <header
@@ -23,13 +28,13 @@ export function BlogHeader() {
             href={link.href}
             className="text-[14px] font-medium text-ink-soft transition-colors hover:text-green"
           >
-            {t.nav[link.key as keyof typeof t.nav]}
+            {settings?.navigation[link.key] || t.nav[link.key as keyof typeof t.nav]}
           </Link>
         ))}
       </nav>
       <div className="flex items-center gap-4">
         <Button href="/contact" variant="dark" className="hidden !px-5 !py-2.5 sm:inline-flex">
-          {t.nav.cta}
+          {settings?.navigation.cta || t.nav.cta}
         </Button>
         <LanguageToggle scrolled />
       </div>

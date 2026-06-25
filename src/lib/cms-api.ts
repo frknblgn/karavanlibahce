@@ -7,7 +7,7 @@ const baseUrl = (
 export async function getCmsData<T>(path: string): Promise<T | null> {
   if (!baseUrl) return null;
   try {
-    const response = await fetch(`${baseUrl}${path}`, { next: { revalidate: 60 } });
+    const response = await fetch(`${baseUrl}${path}`, { cache: "no-store" });
     return response.ok ? ((await response.json()) as T) : null;
   } catch {
     return null;
