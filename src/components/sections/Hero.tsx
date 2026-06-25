@@ -29,7 +29,7 @@ export function Hero({ home = null }: HeroProps) {
       ref={ref}
       id="hero"
       data-screen-label="Hero"
-      className="relative grid min-h-[84svh] overflow-hidden text-white"
+      className="relative grid min-h-[92svh] overflow-hidden text-white md:min-h-[84svh]"
     >
       {/* Parallax background */}
       <motion.div
@@ -71,11 +71,10 @@ export function Hero({ home = null }: HeroProps) {
 
       {/* Content — upper-middle, lifted, capped width */}
       <div
-        className="relative z-[4] grid min-h-[84svh] place-content-center justify-items-center text-center"
+        className="relative z-[4] grid min-h-[92svh] place-content-center justify-items-center pb-[clamp(96px,14vh,132px)] text-center md:min-h-[84svh] md:pb-[clamp(40px,7vh,72px)]"
         style={{
           paddingInline: "var(--gutter)",
           paddingTop: "clamp(86px,12vh,116px)",
-          paddingBottom: "clamp(40px,7vh,72px)",
         }}
       >
         <div className="grid max-w-[760px] -translate-y-[4%] justify-items-center">
@@ -116,9 +115,9 @@ export function Hero({ home = null }: HeroProps) {
       <a
         href="#experience"
         aria-label={t.hero.scroll}
-        className="absolute bottom-7 left-1/2 z-[5] flex -translate-x-1/2 flex-col items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/80"
+        className="absolute bottom-5 left-1/2 z-[5] flex -translate-x-1/2 flex-col items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/80 md:bottom-7"
       >
-        <span className="relative block h-[46px] w-px overflow-hidden bg-gradient-to-b from-white/80 to-transparent">
+        <span className="relative block h-[34px] w-px overflow-hidden bg-gradient-to-b from-white/80 to-transparent md:h-[46px]">
           {!reduce && (
             <span className="absolute -top-1/2 left-0 h-1/2 w-full animate-cue bg-white" />
           )}
