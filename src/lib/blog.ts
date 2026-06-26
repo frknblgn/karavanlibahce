@@ -60,9 +60,15 @@ function getLocalPosts(): BlogPost[] {
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  const cms = await getCmsData<CmsCollection<CmsBlogPost>>("/blog/");
-  if (cms?.items.length) return cms.items.map(cmsToPost).sort((a, b) => +new Date(b.date) - +new Date(a.date));
-  return getLocalPosts();
+  const [local, cms] = await Promise.all([
+    Promise.resolve(getLocalPosts()),
+    getCmsData<CmsCollection<CmsBlogPost>>("/blog/"),
+  ]);
+  const cmsPosts = cms?.items.map(cmsToPost) ?? [];
+  const localSlugs = new Set(local.map((p) => p.slug));
+  // CMS posts that don't already exist as local MDX files
+  const cmsOnly = cmsPosts.filter((p) => !localSlugs.has(p.slug));
+  return [...local, ...cmsOnly].sort((a, b) => +new Date(b.date) - +new Date(a.date));
 }
 
 export async function getAllSlugs(): Promise<string[]> {
@@ -70,6 +76,8 @@ export async function getAllSlugs(): Promise<string[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+  const local = getLocalPostBySlug(slug);
+  if (local) return local;
   const cms = await getCmsData<CmsBlogPost>(`/blog/${slug}/`);
-  return cms ? cmsToPost(cms) : getLocalPostBySlug(slug);
+  return cms ? cmsToPost(cms) : null;
 }

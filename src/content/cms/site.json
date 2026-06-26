@@ -51,7 +51,7 @@
     }
   ],
   "branding": {
-    "logo": "/logo.png"
+    "logo": "/logo.svg"
   },
   "reviews": {
     "show": true,

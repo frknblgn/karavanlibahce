@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { navLinks } from "@/config/navigation";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
-import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 import { Logo } from "@/components/layout/Logo";
 import { cn } from "@/lib/utils";
 import type { CmsSiteSettings } from "@/lib/cms-api";
@@ -15,11 +14,13 @@ interface NavbarProps {
 
 export function Navbar({ settings = null }: NavbarProps) {
   const { t } = useLanguage();
+  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -40,9 +41,10 @@ export function Navbar({ settings = null }: NavbarProps) {
   return (
     <>
       <header
+        suppressHydrationWarning
         className={cn(
           "fixed inset-x-0 top-0 z-[80] flex items-center justify-between gap-6 transition-[padding,background,box-shadow] duration-500 ease-brand",
-          scrolled
+          mounted && scrolled
             ? "bg-beige/85 py-3 shadow-[0_1px_0_theme(colors.line)] backdrop-blur-md"
             : "py-[22px]",
         )}
@@ -67,7 +69,6 @@ export function Navbar({ settings = null }: NavbarProps) {
         </nav>
 
         <div className="flex items-center gap-4">
-          <LanguageToggle scrolled={scrolled} />
           <a
             href="/contact"
             className={cn(

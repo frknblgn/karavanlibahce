@@ -29,12 +29,13 @@ export function Hero({ home = null }: HeroProps) {
       ref={ref}
       id="hero"
       data-screen-label="Hero"
-      className="relative grid min-h-[92svh] overflow-hidden text-white md:min-h-[84svh]"
+      className="relative grid min-h-[92svh] overflow-hidden text-white md:min-h-[90svh]"
     >
       {/* Parallax background */}
       <motion.div
+        suppressHydrationWarning
         style={reduce ? undefined : { y }}
-        className="absolute inset-x-0 -inset-y-[8%]"
+        className="absolute inset-x-0 -inset-y-[5%]"
       >
         {home?.hero_video && !reduce ? (
           <video
@@ -71,13 +72,13 @@ export function Hero({ home = null }: HeroProps) {
 
       {/* Content — upper-middle, lifted, capped width */}
       <div
-        className="relative z-[4] grid min-h-[92svh] place-content-center justify-items-center pb-[clamp(96px,14vh,132px)] text-center md:min-h-[84svh] md:pb-[clamp(40px,7vh,72px)]"
+        className="relative z-[4] grid min-h-[92svh] place-content-center justify-items-center pb-[clamp(96px,14vh,132px)] text-center md:min-h-[90svh] md:pb-[clamp(60px,9vh,96px)]"
         style={{
           paddingInline: "var(--gutter)",
-          paddingTop: "clamp(86px,12vh,116px)",
+          paddingTop: "clamp(100px,15vh,140px)",
         }}
       >
-        <div className="grid max-w-[760px] -translate-y-[4%] justify-items-center">
+        <div className="grid max-w-[760px] justify-items-center">
           <Eyebrow center light>
             {home?.hero_eyebrow || t.hero.eyebrow}
           </Eyebrow>
@@ -115,14 +116,14 @@ export function Hero({ home = null }: HeroProps) {
       <a
         href="#experience"
         aria-label={t.hero.scroll}
-        className="absolute bottom-5 left-1/2 z-[5] flex -translate-x-1/2 flex-col items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/80 md:bottom-7"
+        className="absolute bottom-6 left-1/2 z-[5] flex -translate-x-1/2 flex-col items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-white/70 md:bottom-9"
       >
-        <span className="relative block h-[34px] w-px overflow-hidden bg-gradient-to-b from-white/80 to-transparent md:h-[46px]">
+        {t.hero.scroll}
+        <span className="relative block h-[38px] w-[1px] overflow-hidden rounded-full bg-white/25 md:h-[52px]">
           {!reduce && (
-            <span className="absolute -top-1/2 left-0 h-1/2 w-full animate-cue bg-white" />
+            <span className="absolute -top-full left-0 h-full w-full animate-cue rounded-full bg-white/90" />
           )}
         </span>
-        {t.hero.scroll}
       </a>
     </section>
   );

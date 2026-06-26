@@ -27,7 +27,7 @@ export function Faq({ cmsItems = [], section = null }: FaqProps) {
   return (
     <section id="faq" data-screen-label="FAQ" className="section-y">
       <div className="wrap grid items-start gap-[clamp(40px,6vw,90px)] lg:grid-cols-[0.85fr_1.15fr]">
-        <Reveal>
+        <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <Eyebrow>{section?.eyebrow || t.faq.eyebrow}</Eyebrow>
           <h2 className="mt-4 text-[clamp(32px,4.5vw,52px)]">{section?.title || t.faq.title}</h2>
         </Reveal>
