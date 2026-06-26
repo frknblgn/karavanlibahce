@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
-import { LanguageToggle } from "@/components/i18n/LanguageToggle";
 import { Logo } from "./Logo";
 import { navLinks } from "@/config/navigation";
 import { Button } from "@/components/ui/Button";
@@ -53,7 +52,6 @@ export function BlogHeader({ settings = null }: BlogHeaderProps) {
           <Button href="/contact" variant="dark" className="hidden !px-5 !py-2.5 sm:inline-flex">
             {ctaLabel}
           </Button>
-          <LanguageToggle scrolled />
           <button
             type="button"
             aria-label="Menü"

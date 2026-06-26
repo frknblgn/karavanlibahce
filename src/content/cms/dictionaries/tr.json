@@ -7,7 +7,7 @@
     "nearby": "Çevre",
     "faq": "SSS",
     "contact": "İletişim",
-    "blog": "Günlük",
+    "blog": "Blog",
     "cta": "Rezervasyon"
   },
   "hero": {
@@ -131,7 +131,7 @@
   },
   "whatsappFab": "WhatsApp'tan Rezervasyon",
   "blog": {
-    "eyebrow": "Günlük",
+    "eyebrow": "Blog",
     "title": "Doğadan notlar",
     "lead": "Kaçamak fikirleri, çevre rehberleri ve bahçeden hikâyeler.",
     "readMore": "Yazıyı oku",
