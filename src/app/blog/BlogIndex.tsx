@@ -14,6 +14,7 @@ export function BlogIndex({ posts }: { posts: BlogPost[] }) {
     <main className="section-y min-h-screen">
       <div className="wrap">
         <SectionHeading
+          as="h1"
           eyebrow={t.blog.eyebrow}
           title={t.blog.title}
           lead={t.blog.lead}

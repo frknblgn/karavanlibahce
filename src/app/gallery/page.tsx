@@ -11,6 +11,7 @@ import {
   type CmsGalleryPage,
   type CmsSiteSettings,
 } from "@/lib/cms-api";
+import { GalleryJsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -31,6 +32,7 @@ export default async function GalleryPage() {
 
   return (
     <>
+      <GalleryJsonLd />
       <BlogHeader settings={settings} />
       <main>
         <Gallery cmsItems={galleryResponse?.items ?? []} page={page} />

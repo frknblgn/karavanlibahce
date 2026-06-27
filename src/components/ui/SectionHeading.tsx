@@ -9,6 +9,7 @@ export function SectionHeading({
   align = "left",
   light,
   className,
+  as: Tag = "h2",
 }: {
   eyebrow: string;
   title: string;
@@ -16,6 +17,7 @@ export function SectionHeading({
   align?: "left" | "center";
   light?: boolean;
   className?: string;
+  as?: "h1" | "h2";
 }) {
   const center = align === "center";
   return (
@@ -29,14 +31,14 @@ export function SectionHeading({
       <Eyebrow center={center} light={light}>
         {eyebrow}
       </Eyebrow>
-      <h2
+      <Tag
         className={cn(
           "mt-[18px] text-[clamp(34px,5.2vw,58px)]",
           light && "text-white",
         )}
       >
         {title}
-      </h2>
+      </Tag>
       {lead && (
         <p className={cn("lead mt-[22px]", light && "!text-white/80")}>{lead}</p>
       )}

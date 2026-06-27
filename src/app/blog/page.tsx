@@ -5,6 +5,7 @@ import { BlogHeader } from "@/components/layout/BlogHeader";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { BlogIndex } from "./BlogIndex";
+import { BlogListJsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site.config";
 import { getCmsData, type CmsSiteSettings } from "@/lib/cms-api";
 
@@ -23,6 +24,7 @@ export default async function BlogPage() {
   ]);
   return (
     <>
+      <BlogListJsonLd />
       <BlogHeader settings={settings} />
       <BlogIndex posts={posts} />
       <Footer settings={settings} />

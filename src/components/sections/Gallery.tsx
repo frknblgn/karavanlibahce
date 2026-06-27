@@ -69,6 +69,7 @@ export function Gallery({ cmsItems = [], page = null }: GalleryProps) {
       <div className="wrap">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <SectionHeading
+            as="h1"
             eyebrow={t.galleryPage.eyebrow}
             title={page?.intro_title || t.galleryPage.title}
             lead={page?.intro_text || t.galleryPage.lead}

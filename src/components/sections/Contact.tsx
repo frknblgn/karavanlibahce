@@ -51,7 +51,7 @@ export function Contact({ cmsContact = null, settings = null }: ContactProps) {
       <div className="wrap grid items-stretch gap-[clamp(36px,5vw,72px)] lg:grid-cols-2">
         <Reveal>
           <Eyebrow light>{t.contact.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-[clamp(34px,5vw,56px)] text-white">{cmsContact?.heading || t.contact.title}</h2>
+          <h1 className="mt-4 text-[clamp(34px,5vw,56px)] text-white">{cmsContact?.heading || t.contact.title}</h1>
           <p className="lead mt-5 !text-white/80">{cmsContact?.description || t.contact.lead}</p>
 
           <div className="mt-10 grid gap-1">
