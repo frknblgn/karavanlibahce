@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site.config";
 import "./globals.css";
 
-const GA_ID = "G-M2uB2MRXJC";
+const GA_ID = "G-M2WB2MRXJC";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
