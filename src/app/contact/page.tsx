@@ -20,7 +20,7 @@ export const metadata: Metadata = buildMetadata({
   path: "/contact",
 });
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function ContactPage() {
   const [settings, contact, page] = await Promise.all([
@@ -42,3 +42,4 @@ export default async function ContactPage() {
     </>
   );
 }
+

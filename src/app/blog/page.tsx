@@ -9,7 +9,7 @@ import { BlogListJsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/config/site.config";
 import { getCmsData, type CmsSiteSettings } from "@/lib/cms-api";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export const metadata: Metadata = buildMetadata({
   title: siteConfig.seo.blogTitle,
@@ -32,3 +32,4 @@ export default async function BlogPage() {
     </>
   );
 }
+

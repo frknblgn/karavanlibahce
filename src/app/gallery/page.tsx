@@ -21,7 +21,7 @@ export const metadata: Metadata = buildMetadata({
   image: siteConfig.hero.image,
 });
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export default async function GalleryPage() {
   const [settings, galleryResponse, page] = await Promise.all([
@@ -42,3 +42,4 @@ export default async function GalleryPage() {
     </>
   );
 }
+

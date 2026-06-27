@@ -13,7 +13,7 @@ import { BlogPostingJsonLd } from "@/components/seo/JsonLd";
 import { mdxComponents } from "./mdx-components";
 import { getCmsData, type CmsSiteSettings } from "@/lib/cms-api";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 interface Params {
   params: { slug: string };
